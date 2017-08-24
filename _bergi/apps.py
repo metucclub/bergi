@@ -1,5 +1,4 @@
 from django.apps import AppConfig
 
-
-class BergiConfig(AppConfig):
+class config(AppConfig):
     name = '_bergi'

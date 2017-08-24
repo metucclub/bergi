@@ -1,0 +1,156 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover {
+	color: #7288e1;
+}
+
+html, body {
+	margin: 0; padding: 0;
+	height: 100%;
+	background-color: #eee;
+	font-family: Helvetica, sans-serif;
+}
+
+.logo { height: 2em; display: inline-block; }
+
+.nav {
+	background-color: #000;
+	top: 0;
+	padding: 0.5em;
+}
+
+.cover {
+	height: 60vh;
+	padding-right: 4px;
+	padding-bottom: 16px;
+}
+.cover-col {
+	height: 100%!important;
+}
+.cover-block {
+	height: 50%;
+	padding: 4px 0 0 4px;
+	box-sizing: border-box;
+}
+.cover-post {
+	height: 100%; width: 100%;
+	position: relative;
+	background-size: cover;
+	background-position: center center;
+}
+.cover-gradient {
+	height: 100%; width: 100%;
+	position: absolute;
+	background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), black);
+}
+.cover-header {
+	position: absolute;
+	box-sizing: border-box;
+	bottom: 10%; left: 12px; right: 12px;
+}
+.cover-header h2 {
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 1.7em;
+}
+.cover-byline ul {
+	color: #ccc;
+	font-size: 0.9em;
+	padding: 0.5em;
+}
+.cover-byline li {
+	float: left;
+}
+.cover-byline li + li:before {
+	content: "|";
+	margin: 0.3em;
+}
+@media screen and (max-width: 767px){
+	.cover {
+		height: 90vh;
+	}
+	.cover-block {
+		max-height: 30vh;
+	}
+	.cover-header h2 {
+		font-size: 1.25em;
+	}
+}
+
+.swallow {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.river {
+	padding: 0 4px;
+	box-sizing: border-box;
+}
+.river-post {
+	border-top: 1px solid #ccc;
+}
+.river-img {
+	width: 100%;
+	padding-bottom: 56.25%;
+	background-size: cover;
+	margin-bottom: 0.5em;
+}
+.river-header {
+	box-sizing: border-box;
+	padding: 0.7em;
+}
+.river-header h2 {
+	font-size: 1.25em;
+	margin-bottom: 0.5em;
+}
+.river-byline {
+	font-size: 0.85em;
+	color: #555;
+}
+.river-byline li {
+	float: left;
+}
+.river-byline li + li:before {
+	content: "|";
+	margin: 0.3em;
+}
+.river-byline a {
+	color: #92a8d1;
+}
+@media screen and (max-width: 767px){
+	.river-post {
+		padding: 8px 0;
+	}
+	.river-img {
+		padding-bottom: 66.6667%;
+	}
+}
