@@ -2,13 +2,13 @@
 
 bergi is python-kosher name for e-bergi.
 
-e-bergi is a tech blog which resides [here](e-bergi.com).
+e-bergi is a tech blog which resides [here](http://e-bergi.com).
 
 This repo is a straightforward Django setup to replace it.
 
 ## watch
 
-[duck2.lt/e-bergi/](duck2.lt/e-bergi/) runs the git repository.
+[duck2.lt/e-bergi/](duck2.lt/e-bergi/) ~~runs~~ is going to run the git repository.
 
 ## run
 
