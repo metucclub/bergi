@@ -4,7 +4,7 @@ class Author(models.Model):
 	slug = models.SlugField(max_length=31, unique=True)
 	name = models.CharField(max_length=127)
 	bio = models.CharField(max_length=1023)
-	img = models.ImageField(upload_to="img/")
+	img = models.ImageField()
 
 	def __str__(self):
 		return self.name
@@ -23,7 +23,7 @@ class Article(models.Model):
 	slug = models.SlugField(max_length=63, unique=True)
 	title = models.CharField(max_length=255)
 	content = models.TextField()
-	img = models.ImageField(upload_to="img/")
+	img = models.ImageField()
 
 	date = models.DateField()
 	draft = models.BooleanField(default=True)

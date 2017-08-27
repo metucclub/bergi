@@ -1,6 +1,6 @@
 {# cover post from Article object #}
 
-<div class="cover-post" style="background-image: url('/static/{{ article.img }}')">
+<div class="cover-post" style="background-image: url('{{ article.img.url }}')">
 	<div class="cover-gradient"></div>
 	<header class="cover-header">
 	<a href="{% url "article" article.slug %}"><h2 class="cover-title">{{ article.title }}</h2></a>

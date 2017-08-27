@@ -4,7 +4,7 @@
 	<div class="pure-u-1-4">
 	<a href="{% url "article" article.slug %}">
 		<div class="river-img"
-			style="background-image: url('/static/{{ article.img }}');">
+			style="background-image: url('{{ article.img.url }}');">
 		</div>
 	</a>
 	</div>

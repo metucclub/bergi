@@ -1,11 +1,9 @@
-{# authors, date. display year only if not the current year #}
+{# authors, date #}
+{% load goodies %}
 
-{% now "Y" as current %}
 <ul>
 {% for author in article.authors.all %}
 <li><a href="{% url "author" author.slug %}">{{ author.name }}</a></li>
 {% endfor %}
-
-<li>{{ article.date | date:"j F" }}
-{% if article.date|date:"Y" != current %}{{ article.date|date:"Y" }}{% endif %}</li>
+<li>{{ article.date | datefmt }}</li>
 </ul>

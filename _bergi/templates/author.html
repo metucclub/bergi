@@ -1,3 +1,12 @@
-{% include "header.html" %}
+{% extends "base.html" %}
+{% block body %}
 
-{% include "footer.html" %}
+<div class="pure-g swallow">
+	<div class="pure-u-1 author">
+		<header class="title">{{ author.name }}</header>
+		<img src="/{{ author.img.url }}">
+		<div class="author-bio">{{ author.bio }}</div>
+	</div>
+</div>
+
+{% endblock %}

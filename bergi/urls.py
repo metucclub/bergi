@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from _bergi import views
 
 urlpatterns = [
@@ -24,4 +27,4 @@ urlpatterns = [
 	url(r"^y/([-a-z0-9]+)$", views.article, name="article"),
 	url(r"^kat/([-a-z0-9]+)$", views.cat, name="cat"),
 	url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
