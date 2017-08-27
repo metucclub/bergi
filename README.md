@@ -8,13 +8,13 @@ This repo is a straightforward Django setup to replace it.
 
 ## watch
 
-[duck2.lt/e-bergi/](duck2.lt/e-bergi/) ~~runs~~ is going to run the git repository.
+[duck2.lt/e-bergi/](http://duck2.lt/e-bergi/) ~~runs~~ is going to run the git repository.
 
 ## run
 
 Migrations are not yet committed since the schema is likely to change.
 
-To take a look around with [dummy data](_bergi/fixtures/dummy.json),
+To take a look around with dummy [data](_bergi/fixtures/dummy.json),
 
 ```
 ./manage.py makemigrations
