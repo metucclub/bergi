@@ -40,12 +40,42 @@ html, body {
 	font-family: Helvetica, sans-serif;
 }
 
-.logo { height: 2em; display: inline-block; }
-
+/* like $height=45px */
 .nav {
 	background-color: #000;
+	color: #ddd;
 	top: 0;
-	padding: 0.5em;
+}
+.nav * {
+	display: inline-block;
+	line-height: 45px;
+	vertical-align: bottom!important;
+}
+.logo {
+	height: 25px;
+	padding: 10px;
+}
+.toggly {
+	text-align: right;
+}
+.toggly li {
+	padding: 0 8px;
+}
+.toggly a:hover {
+	color: #fff;
+}
+.ingsoc {
+	border-left: 1px solid #444;
+	margin-left: 8px;
+}
+.ingsoc > * {
+	padding: 0 8px;
+}
+a.fb:hover {
+	color: #3b5998;
+}
+a.tw:hover {
+	color: #1da1f2;
 }
 
 .cover {
@@ -80,19 +110,19 @@ html, body {
 .cover-header h2 {
 	color: #fff;
 	font-family: sans-serif;
-	font-size: 1.7em;
+	font-size: 30px;
 }
 .cover-byline ul {
 	color: #ccc;
-	font-size: 0.9em;
-	padding: 0.5em;
+	font-size: 14px;
+	padding: 8px;
 }
 .cover-byline li {
 	float: left;
 }
 .cover-byline li + li:before {
 	content: "|";
-	margin: 0.3em;
+	margin: 4px;
 }
 @media screen and (max-width: 767px){
 	.cover {
@@ -102,38 +132,35 @@ html, body {
 		max-height: 30vh;
 	}
 	.cover-header h2 {
-		font-size: 1.25em;
+		font-size: 20px;
 	}
 }
 
 .swallow {
 	max-width: 1024px;
-	margin: auto;
-}
-
-.river {
 	padding: 0 4px;
-	box-sizing: border-box;
+	margin: auto;
 }
 .river-post {
 	border-top: 1px solid #ccc;
+	margin-right: 16px;
 }
 .river-img {
 	width: 100%;
 	padding-bottom: 56.25%;
 	background-size: cover;
-	margin-bottom: 0.5em;
+	margin-bottom: 8px;
 }
 .river-header {
 	box-sizing: border-box;
-	padding: 0.7em;
+	padding: 12px;
 }
 .river-header h2 {
-	font-size: 1.25em;
-	margin-bottom: 0.5em;
+	font-size: 20px;
+	margin-bottom: 8px;
 }
 .river-byline {
-	font-size: 0.85em;
+	font-size: 14px;
 	color: #555;
 }
 .river-byline li {
@@ -141,7 +168,7 @@ html, body {
 }
 .river-byline li + li:before {
 	content: "|";
-	margin: 0.3em;
+	margin: 4px;
 }
 .river-byline a {
 	color: #92a8d1;
@@ -150,7 +177,32 @@ html, body {
 	.river-post {
 		padding: 8px 0;
 	}
+	.river-header h2 {
+		font-size: 18px;
+	}
 	.river-img {
 		padding-bottom: 66.6667%;
+	}
+}
+
+.aside header {
+	border-top: 4px solid #92a8d1;
+	border-bottom: 1px solid #ccc;
+	font-size: 20px;
+	text-align: center;
+	padding: 8px 0;
+	margin-top: 16px;
+}
+.aside ol {
+	padding: 8px 16px;
+}
+.aside li {
+	padding: 8px 0;
+	border-bottom: 1px solid #ccc;
+	font-size: 15px;
+}
+@media screen and (max-width: 1023px){
+	.aside {
+		display: none;
 	}
 }

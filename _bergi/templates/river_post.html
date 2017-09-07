@@ -1,14 +1,14 @@
 {# river post from Article object #}
 
 <div class="pure-g river-post">
-	<div class="pure-u-1-4">
+	<div class="pure-u-7-24">
 	<a href="{% url "article" article.slug %}">
 		<div class="river-img"
 			style="background-image: url('{{ article.img.url }}');">
 		</div>
 	</a>
 	</div>
-	<header class="pure-u-3-4 river-header">
+	<header class="pure-u-17-24 river-header">
 		<a href="{% url "article" article.slug %}"><h2>{{ article.title }}</h2></a>
 		<div class="river-byline">
 			{% include "byline.html" %}

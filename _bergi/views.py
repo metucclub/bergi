@@ -3,8 +3,11 @@ from django.http import HttpResponse
 
 from .models import *
 
+ctx = {"cats": Cat.objects.all()}
+
 def index(request):
-	ctx = {"articles": Article.objects.order_by("-date")}
+	ctx = {"articles": Article.objects.order_by("-date"),
+		"articles_pop": Article.objects.order_by("pop")}
 	return render(request, "index.html", ctx)
 
 def author(request, slug):

@@ -17,6 +17,7 @@ Migrations are not yet committed since the schema is likely to change.
 To take a look around with dummy [data](_bergi/fixtures/dummy.json),
 
 ```
+pip3 install -r requirements.txt
 ./manage.py makemigrations
 ./manage.py migrate
 ./manage.py loaddata dummy
@@ -36,14 +37,23 @@ Here is a rough **roadmap** for anyone who wants to help:
 	- [ ] [index](_bergi/templates/index.html)
 		- [x] cover
 		- [x] content river
+		- [x] aside
 		- [ ] nav
+			- [ ] which cats to put on nav?
+			- [x] icons
+				- [ ] strip font-awesome
+			- [ ] what else to put
+				- [ ] "about"
+				- [ ] "archives"
 	- [ ] [author](_bergi/templates/author.html)
 	- [ ] [article](_bergi/templates/article.html)
 	- [ ] [cat](_bergi/templates/cat.html)
-
-- [ ] cms
 
 - [ ] misc
 	- [ ] tags
 	- [ ] archives
 		- [ ] pagination for archives?
+	- [ ] about
+
+
+- [ ] cms
