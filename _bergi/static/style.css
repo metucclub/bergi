@@ -41,28 +41,43 @@ html, body {
 }
 
 /* like $height=45px */
-.nav {
+nav {
 	background-color: #000;
+	max-height: 45px;
 	color: #ddd;
 	top: 0;
+	transition: max-height 0.5s ease;
 }
 .nav * {
 	display: inline-block;
 	line-height: 45px;
 	vertical-align: bottom!important;
 }
+.nav a:hover {
+	color: #fff;
+}
 .logo {
 	height: 25px;
 	padding: 10px;
 }
-.toggly {
-	text-align: right;
+.nav-menu {
+	float: right;
 }
-.toggly li {
+.nav-menu li {
 	padding: 0 8px;
 }
-.toggly a:hover {
-	color: #fff;
+.dropsy {
+	position: relative;
+}
+.dropsy > ul {
+	display: none;
+	background-color: #000;
+	position: absolute;
+	left: -2px;
+	z-index: 1;
+}
+.dropsy:hover > ul {
+	display: block;
 }
 .ingsoc {
 	border-left: 1px solid #444;
@@ -76,6 +91,39 @@ a.fb:hover {
 }
 a.tw:hover {
 	color: #1da1f2;
+}
+.btn-toggle {
+	float: right;
+	margin-right: 16px;
+	display: none;
+}
+.mobile-unpacked {
+	display: none;
+}
+@media screen and (max-width: 767px){
+	.dropsy {
+		display: none;
+	}
+	.btn-toggle {
+		display: initial;
+	}
+	.mobile-unpacked {
+		display: initial;
+	}
+	.nav {
+		overflow: hidden;
+	}
+	.nav-menu {
+		width: 100%;
+		border-top: 1px solid #444;
+	}
+	.nav-menu li {
+		width: 100%;
+	}
+	.ingsoc {
+		border: 0;
+		margin-left: -4px;
+	}
 }
 
 .cover {
