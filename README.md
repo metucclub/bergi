@@ -38,12 +38,12 @@ Here is a rough **roadmap** for anyone who wants to help:
 		- [x] cover
 		- [x] content river
 		- [x] aside
-		- [ ] nav
-			- [ ] which cats to put on nav?
+		- [x] nav
+			- [x] ~~which cats to put on nav?~~ chosen ones
 			- [x] icons
 				- [ ] strip font-awesome
-			- [ ] what else to put
-				- [ ] "about"
+			- [x] what else to put
+				- [x] "about"
 				- [ ] "archives"
 	- [ ] [author](_bergi/templates/author.html)
 	- [ ] [article](_bergi/templates/article.html)
