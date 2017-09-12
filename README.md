@@ -8,7 +8,7 @@ This repo is a straightforward Django setup to replace it.
 
 ## watch
 
-[duck2.lt/e-bergi/](http://duck2.lt/e-bergi/) ~~runs~~ is going to run the git repository.
+[bergi.duck2.lt](http://bergi.duck2.lt) should be running the git repository.
 
 ## run
 

@@ -39,21 +39,24 @@
 	"pk": 1,
 	"fields": {
 		"slug": "square",
-		"name": "Square"
+		"name": "Square",
+		"on_navbar": true
 	}
 }, {
 	"model": "_bergi.cat",
 	"pk": 2,
 	"fields": {
 		"slug": "circle",
-		"name": "Circle"
+		"name": "Circle",
+		"on_navbar": true
 	}
 }, {
 	"model": "_bergi.cat",
 	"pk": 3,
 	"fields": {
 		"slug": "triangle",
-		"name": "Triangle"
+		"name": "Triangle",
+		"on_navbar": true
 	}
 }, {
 	"model": "_bergi.article",
