@@ -6,9 +6,7 @@ from .models import *
 # We need this to put "cats" in global context, so every view doesn't have to call Cat.objects.get for the navigation bar.
 # See how it is pipelined in ../bergi/settings.py:/context_processors/ .
 def cats_on_navbar(request):
-	try:
-		return {"cats": Cat.objects.filter(on_navbar=True)}
-	except Cat.DoesNotExist: return {}
+	return {"cats": Cat.objects.filter(on_navbar=True)}
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
 def index(request):
