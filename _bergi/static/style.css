@@ -256,6 +256,7 @@ a.tw:hover {
 }
 
 .sheet {
+	color: rgba(0, 0, 0, 0.8);
 	margin: auto;
 	max-width: 1200px;
 	padding: 0 50px;
@@ -292,6 +293,7 @@ a.tw:hover {
 	width: 100%;
 	padding-bottom: 50%;
 	background-size: cover;
+	background-position: center center;
 }
 .article-text {
 	margin: 32px 20px 0px 20px;
@@ -341,4 +343,33 @@ a.tw:hover {
 .article-text code {
 	font-size: 14px;
 	background-color: #f3f3f3;
+}
+
+.article-aside {
+	margin-top: 128px;
+	padding-left: 28px;
+}
+.article-aside > header {
+	border-top: 5px solid #92a8d1;
+	padding: 16px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.article-aside-post {
+	padding-bottom: 24px;
+}
+.article-aside-img {
+	padding-bottom: 50%;
+	margin-bottom: 12px;
+	background-size: cover;
+	background-position: center center;
+}
+.article-aside-title {
+	font-size: 16px;
+	font-weight: 600;
+}
+@media screen and (max-width: 1023px){
+	.article-aside {
+		display: none;
+	}
 }

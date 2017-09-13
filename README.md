@@ -45,8 +45,14 @@ Here is a rough **roadmap** for anyone who wants to help:
 			- [x] what else to put
 				- [x] "about"
 				- [ ] "archives"
+		- [ ] footer
 	- [ ] [author](_bergi/templates/author.html)
 	- [ ] [article](_bergi/templates/article.html)
+		- [x] sheet
+		- [x] recommends
+			- [ ] better recommendation algorithm?
+		- [ ] author box
+		- [ ] comments
 	- [ ] [cat](_bergi/templates/cat.html)
 
 - [ ] misc
