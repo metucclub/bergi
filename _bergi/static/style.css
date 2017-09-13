@@ -163,14 +163,14 @@ a.tw:hover {
 .cover-byline ul {
 	color: #ccc;
 	font-size: 14px;
-	padding: 8px;
+	padding: 8px 0;
 }
 .cover-byline li {
 	float: left;
 }
 .cover-byline li + li:before {
 	content: "|";
-	margin: 4px;
+	margin: 0 4px;
 }
 @media screen and (max-width: 767px){
 	.cover {
@@ -256,6 +256,7 @@ a.tw:hover {
 }
 
 .sheet {
+	color: rgba(0, 0, 0, 0.8);
 	margin: auto;
 	max-width: 1200px;
 	padding: 0 50px;
@@ -292,14 +293,15 @@ a.tw:hover {
 	width: 100%;
 	padding-bottom: 50%;
 	background-size: cover;
+	background-position: center center;
 }
 .article-text {
 	margin: 32px 20px 0px 20px;
 	font-size: 18px;
+	line-height: 1.58;
+	letter-spacing: -0.004em;
 }
 .article-text p {
-	line-height: 1.4;
-	letter-spacing: -0.004em;
 	margin-bottom: 30px;
 }
 .article-text a {
@@ -341,4 +343,33 @@ a.tw:hover {
 .article-text code {
 	font-size: 14px;
 	background-color: #f3f3f3;
+}
+
+.article-aside {
+	margin-top: 128px;
+	padding-left: 28px;
+}
+.article-aside > header {
+	border-top: 5px solid #92a8d1;
+	padding: 16px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.article-aside-post {
+	padding-bottom: 24px;
+}
+.article-aside-img {
+	padding-bottom: 50%;
+	margin-bottom: 12px;
+	background-size: cover;
+	background-position: center center;
+}
+.article-aside-title {
+	font-size: 16px;
+	font-weight: 600;
+}
+@media screen and (max-width: 1023px){
+	.article-aside {
+		display: none;
+	}
 }

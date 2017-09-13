@@ -12,6 +12,17 @@
 		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
 	</div>
+	<div class="pure-u-1 pure-u-lg-1-4 article-aside">
+		<header>Önerilenler</header>
+{% for r_article in recommends %}
+		<a href="{% url "article" r_article.slug %}">
+		<div class="article-aside-post">
+			<div class="article-aside-img" style="background-image: url('{{ r_article.img.url }}')"></div>
+			<div class="article-aside-title">{{ r_article.title }}</div>
+		</div>
+		</a>
+{% endfor %}
+	</div>
 </div>
 
 {% endblock body %}

@@ -1,7 +1,11 @@
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404
+
 
 from .models import *
+
+import random
 
 # We need this to put "cats" in global context, so every view doesn't have to call Cat.objects.get for the navigation bar.
 # See how it is pipelined in ../bergi/settings.py:/context_processors/ .
@@ -18,8 +22,19 @@ def author(request, slug):
 	ctx = {"author": get_object_or_404(Author, slug=slug)}
 	return render(request, "author.html", ctx)
 
+# suggestions are nice: display articles with the same Cat and/or Author.
+# XXX: find a better way to recommend articles
 def article(request, slug):
-	ctx = {"article": get_object_or_404(Article, slug=slug)}
+	article = get_object_or_404(Article, slug=slug)
+	other_articles = Article.objects.exclude(slug=slug)
+
+	# see https://stackoverflow.com/questions/739776
+	r = other_articles.filter(Q(cats__in=article.cats.all()) | Q(authors__in=article.authors.all()))
+	recommends = list(r.distinct()[:4])
+	random.shuffle(recommends)
+
+	ctx = {"article": article,
+		"recommends": recommends}
 	return render(request, "article.html", ctx)
 
 def cat(request, slug):
