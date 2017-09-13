@@ -3,10 +3,13 @@
 
 {% load goodies %}
 
-<div class="pure-g swallow">
-	<div class="pure-u-1 pure-u-lg-3-4 article">
-		<header class="title">{{ article.title }}</header>
-		<div class="article-byline">{% include "byline.html" %}</div>
+<div class="pure-g sheet">
+	<div class="pure-u-1 pure-u-lg-2-3 article">
+		<header>
+			<h1 class="article-title">{{ article.title }}</h1>
+			<div class="article-byline">{% include "byline.html" %}</div>
+		</header>
+		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
 	</div>
 </div>

@@ -1,8 +1,8 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -36,7 +36,7 @@ a:hover {
 html, body {
 	margin: 0; padding: 0;
 	height: 100%;
-	background-color: #eee;
+	background-color: #fff;
 	font-family: Helvetica, sans-serif;
 }
 
@@ -253,4 +253,92 @@ a.tw:hover {
 	.aside {
 		display: none;
 	}
+}
+
+.sheet {
+	margin: auto;
+	max-width: 1200px;
+	padding: 0 50px;
+}
+@media screen and (max-width: 767px){
+	.sheet {
+		padding: 0;
+	}
+}
+
+.article header {
+	margin: 48px 16px 24px 16px;
+}
+.article-title {
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: -0.028em;
+}
+.article-byline {
+	margin-top: 8px;
+	color: #555;
+}
+.article-byline li {
+	display: inline-block;
+}
+.article-byline li + li:before {
+	content: ', ';
+	margin-left: -4px;
+}
+.article-byline a {
+	color: #7288e1;
+}
+.article-img {
+	width: 100%;
+	padding-bottom: 50%;
+	background-size: cover;
+}
+.article-text {
+	margin: 32px 20px 0px 20px;
+	font-size: 18px;
+}
+.article-text p {
+	line-height: 1.4;
+	letter-spacing: -0.004em;
+	margin-bottom: 30px;
+}
+.article-text a {
+	color: #7288e1;
+	text-decoration: underline;
+}
+.article-text h2 {
+	font-size: 28px;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	margin-bottom: 8px;
+}
+.article-text blockquote {
+	margin-left: 16px;
+	font-style: italic;
+}
+.article-text ol {
+	list-style-type: decimal;
+	margin-bottom: 35px;
+}
+.article-text li {
+	margin-left: 20px;
+	margin-bottom: 14px;
+}
+.article-text ul {
+	margin-bottom: 35px;
+}
+.article-text ul > li:before {
+	content: "•";
+	margin-left: -15px;
+	margin-right: 15px;
+}
+.article-text pre {
+	font-family: monospace;
+	background-color: #f3f3f3;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+.article-text code {
+	font-size: 14px;
+	background-color: #f3f3f3;
 }
