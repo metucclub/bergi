@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "__base.html" %}
 {% block body %}
 
 {% load goodies %}
@@ -7,7 +7,7 @@
 	<div class="pure-u-1 pure-u-lg-2-3 article">
 		<header>
 			<h1 class="article-title">{{ article.title }}</h1>
-			<div class="article-byline">{% include "byline.html" %}</div>
+			<div class="article-byline">{% include "_byline.html" %}</div>
 		</header>
 		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
 		<div class="article-text">{{ article.content | markdown | safe }}</div>

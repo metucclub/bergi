@@ -1,17 +1,17 @@
-{% extends "base.html" %}
+{% extends "__base.html" %}
 {% block body %}
 
 <div class="pure-g cover">
 	<div class="pure-u-1 pure-u-md-2-3 cover-col cover-block">
-		{% include "cover_post.html" with article=articles.0 %}
+		{% include "_cover_post.html" with article=articles.0 %}
 	</div>
 
 	<div class="pure-u-1 pure-u-md-1-3 cover-col">
 		<div class="cover-block">
-			{% include "cover_post.html" with article=articles.1 %}
+			{% include "_cover_post.html" with article=articles.1 %}
 		</div>
 		<div class="cover-block">
-			{% include "cover_post.html" with article=articles.2 %}
+			{% include "_cover_post.html" with article=articles.2 %}
 		</div>
 	</div>
 </div>
@@ -19,7 +19,7 @@
 <div class="pure-g swallow">
 	<div class="pure-u-1 pure-u-lg-17-24 river">
 	{% for article in articles %}
-		{% include "river_post.html" with article=article %}
+		{% include "_river_post.html" with article=article %}
 	{% endfor %}
 	</div>
 
