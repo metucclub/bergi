@@ -18,7 +18,7 @@
 
 <div class="pure-g swallow">
 	<div class="pure-u-1 pure-u-lg-17-24 river">
-	{% for article in articles %}
+	{% for article in articles|slice:"3:13" %}
 		{% include "_river_post.html" with article=article %}
 	{% endfor %}
 	</div>
@@ -26,7 +26,7 @@
 	<div class="pure-u-1 pure-u-lg-7-24 aside">
 		<header>Çok okunanlar</header>
 		<ol>
-	{% for article in articles_pop %}
+	{% for article in articles_pop|slice:":5" %}
 		<li class="aside-post"><a href="{% url "article" article.slug %}">{{ article.title }}</a></li>
 	{% endfor %}
 		</ol>
