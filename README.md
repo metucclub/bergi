@@ -24,6 +24,8 @@ pip3 install -r requirements.txt
 ./manage.py runserver
 ```
 
+We have two 2015 issues in the repository too. Load their data with `loaddata last_known_ok`.
+
 ## contribute
 
 Here is a rough **roadmap** for anyone who wants to help:
@@ -60,6 +62,5 @@ Here is a rough **roadmap** for anyone who wants to help:
 	- [ ] archives
 		- [ ] pagination for archives?
 	- [ ] about
-
 
 - [ ] cms
