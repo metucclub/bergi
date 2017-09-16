@@ -327,17 +327,21 @@ a.tw:hover {
 	list-style-type: decimal;
 	margin-bottom: 35px;
 }
+.article-text ul {
+	margin-bottom: 35px;
+}
 .article-text li {
 	margin-left: 20px;
 	margin-bottom: 14px;
-}
-.article-text ul {
-	margin-bottom: 35px;
 }
 .article-text ul > li:before {
 	content: "•";
 	margin-left: -15px;
 	margin-right: 15px;
+}
+.article-text li > p {
+	display: inline;
+	margin-left: -10px;
 }
 .article-text pre {
 	font-family: monospace;
