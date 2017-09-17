@@ -4,7 +4,7 @@ bergi is python-kosher name for e-bergi.
 
 e-bergi is a tech blog which resides [here](http://e-bergi.com).
 
-This repo is a straightforward Django setup to replace it.
+This repo is a Django setup to replace it.
 
 ## watch
 
@@ -47,13 +47,14 @@ Here is a rough **roadmap** for anyone who wants to help:
 			- [x] what else to put
 				- [x] "about"
 				- [ ] "archives"
-		- [ ] footer
+		- [x] footer
 	- [ ] [author](_bergi/templates/author.html)
 	- [ ] [article](_bergi/templates/article.html)
 		- [x] sheet
 		- [x] recommends
 			- [ ] better recommendation algorithm?
 		- [ ] author box
+		- [ ] share buttons
 		- [ ] comments
 	- [ ] [cat](_bergi/templates/cat.html)
 

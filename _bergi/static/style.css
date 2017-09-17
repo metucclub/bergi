@@ -33,11 +33,12 @@ a:hover {
 	color: #7288e1;
 }
 
-html, body {
-	margin: 0; padding: 0;
+html {
 	height: 100%;
-	background-color: #fff;
-	font-family: Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
 }
 
 /* like $height=45px */
@@ -58,7 +59,7 @@ nav {
 }
 .logo {
 	height: 25px;
-	padding: 10px;
+	margin: 10px;
 }
 .nav-menu {
 	float: right;
@@ -137,7 +138,6 @@ a.tw:hover {
 .cover-block {
 	height: 50%;
 	padding: 4px 0 0 4px;
-	box-sizing: border-box;
 }
 .cover-post {
 	height: 100%; width: 100%;
@@ -152,7 +152,6 @@ a.tw:hover {
 }
 .cover-header {
 	position: absolute;
-	box-sizing: border-box;
 	bottom: 10%; left: 12px; right: 12px;
 }
 .cover-header h2 {
@@ -200,7 +199,6 @@ a.tw:hover {
 	margin-bottom: 8px;
 }
 .river-header {
-	box-sizing: border-box;
 	padding: 12px;
 }
 .river-header h2 {
@@ -267,7 +265,7 @@ a.tw:hover {
 	}
 }
 
-.article header {
+.article > header {
 	margin: 48px 16px 24px 16px;
 }
 .article-title {
@@ -349,6 +347,34 @@ a.tw:hover {
 	background-color: #f3f3f3;
 }
 
+.article-tail {
+	padding: 20px;
+}
+.article-tail-post {
+	position: relative;
+	height: 100px;
+	background-size: cover;
+	background-position: center center;
+}
+.article-tail-post a {
+	display: inline-block;
+	width: 100%; height: 100%;
+}
+.article-tail-title {
+	position: absolute;
+	bottom: 0; left: 0; right: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.article-tail-title h6 {
+	padding: 8px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .article-aside {
 	margin-top: 128px;
 	padding-left: 28px;
@@ -379,8 +405,15 @@ a.tw:hover {
 }
 
 /* like $height=45px */
+body {
+	position: relative;
+	margin: 0;
+	min-height: 100%;
+	padding-bottom: 45px;
+}
 .footer {
-	margin-top: 40px;
+	position: absolute;
+	bottom: 0; left: 0; right: 0;
 	background-color: #000;
 	color: #ccc;
 	font-size: 13px;

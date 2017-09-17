@@ -15,7 +15,9 @@
 {% for r_article in recommends %}
 			<div class="pure-u-1-2 pure-u-sm-1-4 article-tail-post"
 				style="background-image: url('{{ r_article.img.url }}')">
-				<header class="article-tail-title">{{ r_article.title }}</header>
+				<a href="{% url "article" r_article.slug %}">
+				<header class="article-tail-title"><h6>{{ r_article.title }}</h6></header>
+				</a>
 			</div>
 {% endfor %}
 		</div>

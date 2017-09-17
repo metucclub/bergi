@@ -12,10 +12,10 @@
 
 {% include "_nav.html" %}
 
+<body>
 {% block body %}
 {% endblock %}
-
-<script src="{% static "main.js" %}"></script>
+</body>
 
 <footer class="footer">
 	<ul>
@@ -24,3 +24,5 @@
 	<li><a href="/kunye/">Künye</a></li>
 	</ul>
 </footer>
+
+<script src="{% static "main.js" %}"></script>

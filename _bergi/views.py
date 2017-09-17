@@ -22,16 +22,17 @@ def author(request, slug):
 	ctx = {"author": get_object_or_404(Author, slug=slug)}
 	return render(request, "author.html", ctx)
 
-# suggestions are nice: display articles with the same Cat and/or Author.
-# XXX: find a better way to recommend articles
+# current recommendation algorithm is ducktape and close to random:
+# mix 4 popular articles and articles with same cat or author, draw 4.
 def article(request, slug):
 	article = get_object_or_404(Article, slug=slug)
 	other_articles = Article.objects.exclude(slug=slug)
 
 	# see https://stackoverflow.com/questions/739776
-	r = other_articles.filter(Q(cats__in=article.cats.all()) | Q(authors__in=article.authors.all()))
-	recommends = list(r.distinct()[:4])
-	random.shuffle(recommends)
+	r = other_articles.filter(Q(cats__in=article.cats.all()) | Q(authors__in=article.authors.all())) | other_articles.order_by("pop")[:4]
+	r = list(r.distinct())
+	random.shuffle(r)
+	recommends = r[:4]
 
 	ctx = {"article": article,
 		"recommends": recommends}
