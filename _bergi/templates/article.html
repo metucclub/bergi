@@ -11,6 +11,14 @@
 		</header>
 		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
+		<div class="pure-g article-tail">
+{% for r_article in recommends %}
+			<div class="pure-u-1-2 pure-u-sm-1-4 article-tail-post"
+				style="background-image: url('{{ r_article.img.url }}')">
+				<header class="article-tail-title">{{ r_article.title }}</header>
+			</div>
+{% endfor %}
+		</div>
 	</div>
 	<div class="pure-u-1 pure-u-lg-1-4 article-aside">
 		<header>Önerilenler</header>

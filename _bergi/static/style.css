@@ -377,3 +377,24 @@ a.tw:hover {
 		display: none;
 	}
 }
+
+/* like $height=45px */
+.footer {
+	margin-top: 40px;
+	background-color: #000;
+	color: #ccc;
+	font-size: 13px;
+	height: 45px;
+}
+.footer ul {
+	width: 100%;
+	text-align: center;
+}
+.footer li {
+	display: inline-block;
+	line-height: 45px;
+}
+.footer li + li:before {
+	content: "·";
+	padding: 0 8px;
+}
