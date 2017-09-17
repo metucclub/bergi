@@ -1,11 +1,21 @@
 {% extends "__base.html" %}
 {% block body %}
 
-<div class="pure-g swallow">
-	<div class="pure-u-1 author">
-		<header class="title">{{ author.name }}</header>
-		<img src="/{{ author.img.url }}">
+<div class="pure-g sheet">
+	<div class="pure-u-1 pure-u-lg-2-3 author">
+		<div class="author-hero">
+			<div class="author-img" style="background-image:url('{{ author.img.url }}')"></div>
+			<header>
+				<h1>{{ author.name }}</h1>
+			</header>
+		</div>
 		<div class="author-bio">{{ author.bio }}</div>
+		<div class="author-posts">
+		<header><h1>Yazılar</h1></header>
+{% for article in author.article_set.all %}
+			{% include "_river_post.html" with article=article %}
+{% endfor %}
+		</div>
 	</div>
 </div>
 

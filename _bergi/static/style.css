@@ -230,6 +230,14 @@ a.tw:hover {
 		padding-bottom: 66.6667%;
 	}
 }
+@media screen and (max-width: 479px){
+	.river-header h2 {
+		font-size: 14px;
+	}
+	.river-byline {
+		font-size: 12px;
+	}
+}
 
 .aside header {
 	border-top: 4px solid #92a8d1;
@@ -408,6 +416,37 @@ a.tw:hover {
 	.article-aside {
 		display: none;
 	}
+}
+
+.author {
+	padding: 40px 0;
+	margin: auto;
+}
+.author-hero > * {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 16px;
+}
+.author-img {
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	background-size: cover;
+	background-position: center center;
+}
+.author-hero h1 {
+	font-size: 32px;
+	font-weight: bold;
+}
+.author-bio {
+	padding: 20px;
+	margin-top: 20px;
+	border-top: 1px solid #ddd;
+}
+.author-posts h1 {
+	margin: 20px;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 /* like $height=45px */
