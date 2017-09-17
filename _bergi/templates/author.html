@@ -12,7 +12,7 @@
 		<div class="author-bio">{{ author.bio }}</div>
 		<div class="author-posts">
 		<header><h1>Yazılar</h1></header>
-{% for article in author.article_set.all %}
+{% for article in author_articles %}
 			{% include "_river_post.html" with article=article %}
 {% endfor %}
 		</div>

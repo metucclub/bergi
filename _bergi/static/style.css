@@ -129,8 +129,8 @@ a.tw:hover {
 
 .cover {
 	height: 60vh;
-	padding-right: 4px;
-	padding-bottom: 16px;
+	margin-right: 4px;
+	margin-bottom: 16px;
 }
 .cover-col {
 	height: 100%!important;
@@ -188,9 +188,12 @@ a.tw:hover {
 	padding: 0 4px;
 	margin: auto;
 }
+.river {
+	max-width: 800px;
+	margin: auto;
+}
 .river-post {
 	border-top: 1px solid #ccc;
-	margin-right: 16px;
 }
 .river-img {
 	width: 100%;
@@ -419,7 +422,7 @@ a.tw:hover {
 }
 
 .author {
-	padding: 40px 0;
+	padding: 40px 4px;
 	margin: auto;
 }
 .author-hero > * {
@@ -447,6 +450,18 @@ a.tw:hover {
 	margin: 20px;
 	font-size: 24px;
 	font-weight: bold;
+}
+.author-posts {
+	max-width: 800px;
+	margin: auto;
+}
+@media screen and (max-width: 767px){
+	.author-hero > * {
+		margin: 0 12px;
+	}
+	.author-hero h1 {
+		font-size: 24px;
+	}
 }
 
 /* like $height=45px */
