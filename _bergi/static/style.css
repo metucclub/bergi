@@ -298,6 +298,7 @@ a.tw:hover {
 	font-size: 18px;
 	line-height: 1.58;
 	letter-spacing: -0.004em;
+	border-bottom: 1px solid #ddd;
 }
 .article-text img {
 	display: block;
@@ -348,7 +349,7 @@ a.tw:hover {
 }
 
 .article-tail {
-	padding: 20px;
+	padding: 24px;
 }
 .article-tail-post {
 	position: relative;
@@ -373,6 +374,11 @@ a.tw:hover {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+@media screen and (max-width: 767px){
+	.article-tail {
+		padding: 20px 0;
+	}
 }
 
 .article-aside {
