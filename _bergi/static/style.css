@@ -36,6 +36,8 @@ a:hover {
 html {
 	height: 100%;
 	box-sizing: border-box;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto",
+				"Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 *, *:before, *:after {
 	box-sizing: inherit;
