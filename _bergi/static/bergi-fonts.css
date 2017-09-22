@@ -1,57 +1,69 @@
 @font-face {
-    font-family:'bergi-charis';
-    src: url('fonts/Charis SIL Bold.woff2') format('woff2'),
+	font-family:'bergi-charis';
+	src: url('fonts/Charis SIL Bold.woff2') format('woff2'),
 		url('fonts/Charis SIL Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    unicode-range: U+0020-2219;
+	font-weight: 700;
+	font-style: normal;
+	unicode-range: U+0020-2219;
 }
 @font-face {
-    font-family:'bergi-charis';
-    src: url('fonts/Charis SIL Bold Italic.woff2') format('woff2'),
+	font-family:'bergi-charis';
+	src: url('fonts/Charis SIL Bold Italic.woff2') format('woff2'),
 		url('fonts/Charis SIL Bold Italic.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
-    unicode-range: U+0020-2219;
+	font-weight: 700;
+	font-style: italic;
+	unicode-range: U+0020-2219;
 }
 @font-face {
-    font-family:'bergi-charis';
-    src: url('fonts/Charis SIL Italic.woff2') format('woff2'),
+	font-family:'bergi-charis';
+	src: url('fonts/Charis SIL Italic.woff2') format('woff2'),
 		url('fonts/Charis SIL Italic.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-    unicode-range: U+0020-2219;
+	font-weight: 400;
+	font-style: italic;
+	unicode-range: U+0020-2219;
 }
 @font-face {
-    font-family:'bergi-charis';
-    src: url('fonts/Charis SIL.woff2') format('woff2'),
+	font-family:'bergi-charis';
+	src: url('fonts/Charis SIL.woff2') format('woff2'),
 		url('fonts/Charis SIL.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    unicode-range: U+0020-2219;
+	font-weight: 400;
+	font-style: normal;
+	unicode-range: U+0020-2219;
 }
 
 @font-face {
-    font-family:'bergi-liberation';
-    src: url('fonts/LiberationSans-Bold-webfont.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
+	font-family:'bergi-liberation';
+	src: url('fonts/Liberation Sans Bold.woff2') format('woff2'),
+	            url('fonts/Liberation Sans Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0021-10013;
 }
 @font-face {
-    font-family:'bergi-liberation';
-    src: url('fonts/LiberationSans-BoldItalic-webfont.woff') format('woff');
-    font-weight: 700;
-    font-style: italic;
+	font-family:'bergi-liberation';
+	src: url('fonts/Liberation Sans Bold Italic.woff2') format('woff2'),
+	            url('fonts/Liberation Sans Bold Italic.woff') format('woff');
+	font-weight: 700;
+	font-style: italic;
+	font-stretch: normal;
+	unicode-range: U+0021-10013;
 }
 @font-face {
-    font-family:'bergi-liberation';
-    src: url('fonts/LiberationSans-Italic-webfont.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
+	font-family:'bergi-liberation';
+	src: url('fonts/Liberation Sans Italic.woff2') format('woff2'),
+	            url('fonts/Liberation Sans Italic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+	font-stretch: normal;
+	unicode-range: U+0021-10013;
 }
 @font-face {
-    font-family:'bergi-liberation';
-    src: url('fonts/LiberationSans-Regular-webfont.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+	font-family:'bergi-liberation';
+	src: url('fonts/Liberation Sans.woff2') format('woff2'),
+	            url('fonts/Liberation Sans.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0021-10013;
 }

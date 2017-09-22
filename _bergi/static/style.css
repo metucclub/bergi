@@ -318,6 +318,7 @@ a.tw:hover {
 	font-size: 18px;
 	line-height: 1.58;
 	letter-spacing: -0.004em;
+	word-break: break-word;
 	border-bottom: 1px solid #ddd;
 }
 .article-text img {
