@@ -40,6 +40,7 @@ html {
 }
 *, *:before, *:after {
 	box-sizing: inherit;
+	text-rendering: optimizeLegibility;
 }
 
 /* like $height=45px */
@@ -119,12 +120,17 @@ a.tw:hover {
 		width: 100%;
 		border-top: 1px solid #444;
 	}
-	.nav-menu li {
+	.nav-menu ul,
+	.nav-menu li,
+	.nav-menu a {
 		width: 100%;
 	}
 	.ingsoc {
 		border: 0;
 		margin-left: -4px;
+	}
+	.ingsoc a {
+		width: initial;
 	}
 }
 
