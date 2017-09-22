@@ -1,9 +1,11 @@
-{# cover post from Article object #}
-
 <div class="cover-post" style="background-image: url('{{ article.img.url }}')">
-	<div class="cover-gradient"></div>
+	<a href="{% url "article" article.slug %}">
+		<div class="cover-gradient"></div>
+	</a>
 	<header class="cover-header">
-	<a href="{% url "article" article.slug %}"><h2 class="cover-title">{{ article.title }}</h2></a>
+	<a href="{% url "article" article.slug %}">
+		<h2 class="cover-title">{{ article.title }}</h2>
+	</a>
 	<div class="cover-byline">
 		{% include "_byline.html" %}
 	</div>

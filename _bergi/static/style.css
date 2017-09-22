@@ -36,8 +36,7 @@ a:hover {
 html {
 	height: 100%;
 	box-sizing: border-box;
-	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto",
-				"Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+	font-family: bergi-liberation, sans-serif;
 }
 *, *:before, *:after {
 	box-sizing: inherit;
@@ -309,6 +308,7 @@ a.tw:hover {
 }
 .article-text {
 	margin: 32px 20px 0px 20px;
+	font-family: bergi-charis, serif;
 	font-size: 18px;
 	line-height: 1.58;
 	letter-spacing: -0.004em;
