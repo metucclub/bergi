@@ -445,6 +445,7 @@ a.tw:hover {
 	background-position: center center;
 }
 .author-hero h1 {
+	margin: 16px 0;
 	font-size: 32px;
 	font-weight: bold;
 }
@@ -467,7 +468,6 @@ a.tw:hover {
 		margin: 0 12px;
 	}
 	.author-hero h1 {
-		margin: 16px 0;
 		font-size: 24px;
 	}
 }
