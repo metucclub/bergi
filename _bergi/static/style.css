@@ -429,7 +429,7 @@ a.tw:hover {
 }
 
 .author {
-	padding: 40px 4px;
+	padding: 40px 0;
 	margin: auto;
 }
 .author-hero > * {
@@ -467,6 +467,7 @@ a.tw:hover {
 		margin: 0 12px;
 	}
 	.author-hero h1 {
+		margin: 16px 0;
 		font-size: 24px;
 	}
 }
