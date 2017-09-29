@@ -190,7 +190,7 @@ a.tw:hover {
 
 /* generic content/aside layout */
 .sheet {
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, 0.84);
 	max-width: 1000px;
 	box-sizing: content-box;
 	padding: 0 50px;
