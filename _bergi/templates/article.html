@@ -4,7 +4,7 @@
 {% load goodies %}
 
 <div class="pure-g sheet">
-	<div class="pure-u-1 pure-u-lg-2-3 article">
+	<div class="pure-u-1 pure-u-lg-3-4 content article">
 		<header>
 			<h1 class="article-title">{{ article.title }}</h1>
 			<div class="article-byline">{% include "_byline.html" %}</div>
@@ -22,7 +22,7 @@
 {% endfor %}
 		</div>
 	</div>
-	<div class="pure-u-1 pure-u-lg-1-4 article-aside">
+	<div class="pure-u-1 pure-u-lg-1-4 aside article-aside">
 		<header>Önerilenler</header>
 {% for r_article in recommends %}
 		<a href="{% url "article" r_article.slug %}">

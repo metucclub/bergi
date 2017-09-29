@@ -35,11 +35,10 @@ a:hover {
 
 html {
 	height: 100%;
-	box-sizing: border-box;
 	font-family: bergi-liberation, sans-serif;
 }
 *, *:before, *:after {
-	box-sizing: inherit;
+	box-sizing: border-box;
 	text-rendering: optimizeLegibility;
 }
 
@@ -189,15 +188,34 @@ a.tw:hover {
 	}
 }
 
-.swallow {
-	max-width: 1024px;
-	padding: 0 4px;
+/* generic content/aside layout */
+.sheet {
+	color: rgba(0, 0, 0, 0.8);
+	max-width: 1000px;
+	box-sizing: content-box;
+	padding: 0 50px;
 	margin: auto;
 }
-.river {
-	max-width: 800px;
-	margin: auto;
+.content {
+	padding-right: 32px;
 }
+@media screen and (max-width: 1023px){
+	.sheet {
+		max-width: 768px;
+	}
+	.content {
+		padding: 0;
+	}
+	.aside {
+		display: none;
+	}
+}
+@media screen and (max-width: 767px){
+	.sheet {
+		padding: 0;
+	}
+}
+
 .river-post {
 	border-top: 1px solid #ccc;
 }
@@ -229,6 +247,9 @@ a.tw:hover {
 	color: #92a8d1;
 }
 @media screen and (max-width: 767px){
+	.river {
+		margin: 0 4px;
+	}
 	.river-post {
 		padding: 8px 0;
 	}
@@ -249,7 +270,7 @@ a.tw:hover {
 	}
 }
 
-.aside header {
+.river-aside header {
 	border-top: 4px solid #92a8d1;
 	border-bottom: 1px solid #ccc;
 	font-size: 20px;
@@ -257,30 +278,13 @@ a.tw:hover {
 	padding: 8px 0;
 	margin-top: 16px;
 }
-.aside ol {
+.river-aside ol {
 	padding: 8px 16px;
 }
-.aside li {
+.river-aside li {
 	padding: 8px 0;
 	border-bottom: 1px solid #ccc;
 	font-size: 15px;
-}
-@media screen and (max-width: 1023px){
-	.aside {
-		display: none;
-	}
-}
-
-.sheet {
-	color: rgba(0, 0, 0, 0.8);
-	margin: auto;
-	max-width: 1200px;
-	padding: 0 50px;
-}
-@media screen and (max-width: 767px){
-	.sheet {
-		padding: 0;
-	}
 }
 
 .article > header {
@@ -403,7 +407,6 @@ a.tw:hover {
 
 .article-aside {
 	margin-top: 128px;
-	padding-left: 28px;
 }
 .article-aside > header {
 	border-top: 5px solid #92a8d1;
@@ -423,11 +426,6 @@ a.tw:hover {
 .article-aside-title {
 	font-size: 16px;
 	font-weight: 600;
-}
-@media screen and (max-width: 1023px){
-	.article-aside {
-		display: none;
-	}
 }
 
 .author {
