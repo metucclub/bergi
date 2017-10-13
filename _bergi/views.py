@@ -14,11 +14,12 @@ def cats_on_navbar(request):
 	return {"cats": Cat.objects.filter(on_navbar=True)}
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
+# we don't place any post in Pop if it's already on the page.
 def index(request):
 	articles = Article.objects.order_by("-date")
 	cover = articles[:3]
 	river = articles[3:13]
-	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river]))
+	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river]))[:4]
 	ctx = {"cover": cover, "river": river, "pop": pop}
 	return render(request, "index.html", ctx)
 
@@ -59,6 +60,5 @@ def archive(request, page):
 	except EmptyPage:
 		raise Http404
 
-	ctx = {"articles": articles,
-		"articles_pop": Article.objects.order_by("-pop")[:4]}
+	ctx = {"articles": articles}
 	return render(request, "archive.html", ctx)
