@@ -2,8 +2,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, img, ins, kbd, q, s, samp,
-small, strike, sub, sup, tt, var,
-b, u, i, center,
+small, strike, sub, sup, tt, var, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
@@ -197,12 +196,11 @@ a.tw:hover {
 	margin: auto;
 }
 .content {
+	max-width: 768px;
 	padding-right: 32px;
+	margin: auto;
 }
 @media screen and (max-width: 1023px){
-	.sheet {
-		max-width: 768px;
-	}
 	.content {
 		padding: 0;
 	}
@@ -223,6 +221,7 @@ a.tw:hover {
 	width: 100%;
 	padding-bottom: 56.25%;
 	background-size: cover;
+	background-position: center center;
 	margin-bottom: 8px;
 }
 .river-header {
@@ -270,27 +269,41 @@ a.tw:hover {
 	}
 }
 
-.river-aside header {
-	border-top: 4px solid #92a8d1;
-	border-bottom: 1px solid #ccc;
-	font-size: 20px;
-	text-align: center;
-	padding: 8px 0;
-	margin-top: 16px;
+.river-aside {
+	margin-top: 48px;
+	padding-left: 12px;
 }
-.river-aside ol {
-	padding: 8px 16px;
+.river-aside .aside-hero {
+	color: rgba(0, 0, 0, 0.7);
 }
-.river-aside li {
-	padding: 8px 0;
-	border-bottom: 1px solid #ccc;
-	font-size: 15px;
+.river-aside .aside-title {
+	color: rgba(0, 0, 0, 0.8);
 }
 
-.article > header {
+.aside-hero {
+	border-top: 4px solid #92a8d1;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 16px;
+}
+.aside-post {
+	padding-bottom: 24px;
+}
+.aside-img {
+	padding-bottom: 50%;
+	margin-bottom: 12px;
+	background-size: cover;
+	background-position: center center;
+}
+.aside-title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.article-hero {
 	margin: 48px 16px 24px 16px;
 }
-.article-title {
+.article-hero h1 {
 	font-size: 32px;
 	font-weight: 700;
 	letter-spacing: -0.028em;
@@ -414,19 +427,6 @@ a.tw:hover {
 	font-weight: bold;
 	font-size: 20px;
 }
-.article-aside-post {
-	padding-bottom: 24px;
-}
-.article-aside-img {
-	padding-bottom: 50%;
-	margin-bottom: 12px;
-	background-size: cover;
-	background-position: center center;
-}
-.article-aside-title {
-	font-size: 16px;
-	font-weight: 600;
-}
 
 .author {
 	padding: 40px 0;
@@ -470,6 +470,15 @@ a.tw:hover {
 	.author-hero h1 {
 		font-size: 24px;
 	}
+}
+
+.list-hero {
+	margin: 48px 12px 24px;
+}
+.list-hero h1 {
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: 12px;
 }
 
 /* like $height=45px */

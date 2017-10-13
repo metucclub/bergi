@@ -1,0 +1,6 @@
+<a href="{% url "article" article.slug %}">
+	<div class="aside-post">
+		<div class="aside-img" style="background-image: url('{{ article.img.url }}')"></div>
+		<div class="aside-title">{{ article.title }}</div>
+	</div>
+</a>

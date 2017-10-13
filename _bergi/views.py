@@ -1,6 +1,8 @@
-from django.http import HttpResponse
-from django.db.models import Q
+from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
+
+from django.db.models import Q
+from django.core.paginator import *
 
 from .models import *
 
@@ -13,8 +15,11 @@ def cats_on_navbar(request):
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
 def index(request):
-	ctx = {"articles": Article.objects.order_by("-date"),
-		"articles_pop": Article.objects.order_by("pop")}
+	articles = Article.objects.order_by("-date")
+	cover = articles[:3]
+	river = articles[3:13]
+	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river]))
+	ctx = {"cover": cover, "river": river, "pop": pop}
 	return render(request, "index.html", ctx)
 
 def author(request, slug):
@@ -42,3 +47,18 @@ def article(request, slug):
 def cat(request, slug):
 	ctx = {"cat": get_object_or_404(Cat, slug=slug)}
 	return render(request, "cat.html", ctx)
+
+# PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
+# see urls.py:/arsiv/ .
+def archive(request, page):
+	paginator = Paginator(Article.objects.order_by("-date"), per_page=20, orphans=6)
+	try:
+		articles = paginator.page(page)
+	except PageNotAnInteger:
+		articles = paginator.page(1)
+	except EmptyPage:
+		raise Http404
+
+	ctx = {"articles": articles,
+		"articles_pop": Article.objects.order_by("-pop")[:4]}
+	return render(request, "archive.html", ctx)
