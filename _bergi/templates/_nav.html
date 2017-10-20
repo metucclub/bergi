@@ -9,7 +9,7 @@
 	<div class="nav-menu">
 		<ul>
 {% for cat in cats %}
-			<li><a href="{% url "cat" cat.slug %}">{{ cat.slug }}/</a></li>
+			<li><a href="{% url "cat" cat.slug 1 %}">{{ cat.slug }}/</a></li>
 {% endfor %}
 			<li class="dropsy">
 				<a>...<i class="fa fa-caret-down"></i></a>
