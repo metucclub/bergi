@@ -48,7 +48,7 @@ Here is a rough **roadmap** for anyone who wants to help:
 				- [x] "about"
 				- [x] "archives"
 		- [x] footer
-	- [ ] [author](_bergi/templates/author.html)
+	- [x] [author](_bergi/templates/author.html)
 	- [x] [article](_bergi/templates/article.html)
 		- [x] sheet
 		- [x] recommends
@@ -61,7 +61,7 @@ Here is a rough **roadmap** for anyone who wants to help:
 - [ ] misc
 	- [ ] tags
 	- [x] archives
-		- [ ] pagination for archives?
+		- [x] pagination for archives?
 	- [ ] about
 
 - [ ] cms
