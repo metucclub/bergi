@@ -45,20 +45,41 @@ def article(request, slug):
 		"recommends": recommends}
 	return render(request, "article.html", ctx)
 
-def cat(request, slug):
-	ctx = {"cat": get_object_or_404(Cat, slug=slug)}
-	return render(request, "cat.html", ctx)
+# generic fn to use with paginated views.
+# returns a context with the Page obj,
+# a range for templates/_paginator.html and whether to show ellipses(…).
+def page_ctx(paginator, page):
+	try:
+		page = paginator.page(page)
+	except PageNotAnInteger:
+		page = paginator.page(1)
+	except EmptyPage:
+		raise Http404
+
+	n = page.number+1
+	N = paginator.num_pages
+
+	left = max(2, n-2)
+	right = min(n+2, N)
+
+	return {"page_obj": page,
+		"range": range(left, right),
+		"left_ellipsis": left > 2,
+		"right_ellipsis": right < N}
 
 # PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
 # see urls.py:/arsiv/ .
 def archive(request, page):
-	paginator = Paginator(Article.objects.order_by("-date"), per_page=20, orphans=6)
-	try:
-		articles = paginator.page(page)
-	except PageNotAnInteger:
-		articles = paginator.page(1)
-	except EmptyPage:
-		raise Http404
+	paginator = Paginator(Article.objects.order_by("-date"), per_page=1, orphans=1)
 
-	ctx = {"articles": articles}
+	ctx = page_ctx(paginator, page)
 	return render(request, "archive.html", ctx)
+
+def cat(request, slug, page):
+	cat = get_object_or_404(Cat, slug=slug)
+	paginator = Paginator(cat.article_set.order_by("-date"), per_page=1, orphans=1)
+
+	ctx = page_ctx(paginator, page)
+	ctx["cat"] = cat
+
+	return render(request, "cat.html", ctx)

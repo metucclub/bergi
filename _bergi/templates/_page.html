@@ -1,0 +1,7 @@
+{# relevant only in _paginator.html #}
+
+{% ifequal page page_obj.number %}
+	<span class="disabled page">{{ page }}</span>
+{% else %}
+	<a class="page" href="{{ paging_url }}{{ page }}">{{ page }}</a>
+{% endifequal %}

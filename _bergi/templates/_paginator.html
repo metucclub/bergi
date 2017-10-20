@@ -1,0 +1,33 @@
+{# pagination is pointless for a single page #}
+{% if page_obj.paginator.num_pages > 1 %}
+
+<div class="paginator">
+	{% if page_obj.has_previous %}
+		<a class="page" href="{{ paging_url }}{{ page_obj.previous_page_number }}">
+			<span class="fa-caret-left"></span>&nbsp;Geri</a>
+	{% else %}
+		<span class="disabled page">
+			<span class="fa-caret-left"></span>&nbsp;Geri</span>
+	{% endif %}
+
+	{% include "_page.html" with page=1 %}
+	{% if left_ellipsis %} … {% endif %}
+
+{% for page in range %}
+	{% include "_page.html" with page=page %}
+{% endfor %}
+
+	{% if right_ellipsis %} … {% endif %}
+	{% include "_page.html" with page=page_obj.paginator.num_pages %}
+
+	{% if page_obj.has_next %}
+		<a class="page" href="{{ paging_url }}{{ page_obj.next_page_number }}">
+			İleri&nbsp;<span class="fa-caret-right"></span>
+		</a>
+	{% else %}
+		<span class="disabled page">
+			İleri&nbsp;<span class="fa-caret-right"></span></span>
+	{% endif %}
+</div>
+
+{% endif %}

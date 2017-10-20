@@ -245,6 +245,14 @@ a.tw:hover {
 .river-byline a {
 	color: #92a8d1;
 }
+.load-more {
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 12px 0;
+	border: 1px solid #ccc;
+	margin-bottom: 16px;
+}
 @media screen and (max-width: 767px){
 	.river {
 		margin: 0 4px;
@@ -350,8 +358,10 @@ a.tw:hover {
 	text-decoration: underline;
 }
 .article-text h2 {
-	font-size: 28px;
+	font-family: bergi-liberation;
 	font-weight: bold;
+	font-size: 28px;
+	line-height: 1.2;
 	letter-spacing: -0.02em;
 	margin-bottom: 8px;
 }
@@ -479,6 +489,18 @@ a.tw:hover {
 	font-size: 32px;
 	font-weight: bold;
 	margin-bottom: 12px;
+}
+
+.paginator {
+	margin: 20px 14px;
+}
+.paginator .page {
+	padding: 4px;
+	border: 1px solid #ddd;
+}
+.paginator .disabled {
+	color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #fff;
 }
 
 /* like $height=45px */
