@@ -210,6 +210,7 @@ a.tw:hover {
 }
 @media screen and (max-width: 767px){
 	.sheet {
+		margin: 0 4px;
 		padding: 0;
 	}
 }
@@ -254,9 +255,6 @@ a.tw:hover {
 	margin-bottom: 16px;
 }
 @media screen and (max-width: 767px){
-	.river {
-		margin: 0 4px;
-	}
 	.river-post {
 		padding: 8px 0;
 	}
@@ -337,7 +335,7 @@ a.tw:hover {
 	background-position: center center;
 }
 .article-text {
-	margin: 32px 20px 0px 20px;
+	margin: 32px 16px 0px 16px;
 	font-family: bergi-charis, serif;
 	font-size: 18px;
 	line-height: 1.58;
@@ -438,26 +436,32 @@ a.tw:hover {
 	font-size: 20px;
 }
 
+/* like $radius=100px */
 .author {
 	padding: 40px 0;
 	margin: auto;
 }
-.author-hero > * {
-	display: inline-block;
-	vertical-align: top;
-	margin: 0 16px;
+.author-hero {
+	min-height: 100px;
 }
 .author-img {
+	float: left;
 	width: 100px;
 	height: 100px;
+	margin: 0 16px;
 	border-radius: 100%;
 	background-size: cover;
 	background-position: center center;
 }
+.author-hero header {
+	margin-left: 132px;
+}
 .author-hero h1 {
-	margin: 16px 0;
+	padding: 16px;
 	font-size: 32px;
+	line-height: 1.2;
 	font-weight: bold;
+	word-break: break-word;
 }
 .author-bio {
 	padding: 20px;
@@ -493,6 +497,7 @@ a.tw:hover {
 
 .paginator {
 	margin: 20px 14px;
+	line-height: 1.8;
 }
 .paginator .page {
 	padding: 4px;

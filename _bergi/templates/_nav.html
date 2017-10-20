@@ -14,14 +14,14 @@
 			<li class="dropsy">
 				<a>...<i class="fa fa-caret-down"></i></a>
 				<ul>
-					<li><a href="/arsiv/">Arşiv</a></li>
+					<li><a href="{% url "archive" 1 %}">Arşiv</a></li>
 					<li><a href="/hakkinda/">Hakkında</a></li>
 					<li><a href="/kunye/">Künye</a></li>
 				</ul>
 			</li>
 {# It is easier to show another menu than unpacking the dropdown with media queries. #}
 			<div class="mobile-unpacked">
-				<li><a href="/hakkinda/">Arşiv</a></li>
+				<li><a href="{% url "archive" 1 %}">Arşiv</a></li>
 				<li><a href="/hakkinda/">Hakkında</a></li>
 				<li><a href="/kunye/">Künye</a></li>
 			</div>
