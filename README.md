@@ -18,7 +18,7 @@ To take a look around with dummy [data](_bergi/fixtures/dummy.json),
 
 ```
 pip3 install -r requirements.txt
-./manage.py makemigrations
+./manage.py makemigrations _bergi
 ./manage.py migrate
 ./manage.py loaddata dummy
 ./manage.py runserver
