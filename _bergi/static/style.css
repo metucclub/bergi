@@ -40,6 +40,9 @@ html {
 	box-sizing: border-box;
 	text-rendering: optimizeLegibility;
 }
+*:focus {
+	outline: none;
+}
 
 /* like $height=45px */
 nav {
@@ -498,6 +501,30 @@ a.tw:hover {
 	font-weight: bold;
 	margin-bottom: 12px;
 }
+
+.search {
+	margin: 48px 0px 24px;
+}
+.search-wrap {
+	width: 512px;
+	max-width: 100%;
+	padding: 8px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+	margin-bottom: 12px;
+}
+.search input {
+	width: 100%;
+	padding-right: 16px;
+	font-size: 32px;
+	font-weight: bold;
+	border: 0;
+}
+.search .search-icon {
+	position: absolute;
+	right: 0;
+	bottom: 16px;
+}
+
 
 .paginator {
 	margin: 20px 14px;

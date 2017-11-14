@@ -17,6 +17,7 @@ class Cat(models.Model):
 	def __str__(self):
 		return self.name
 
+# XXX: draft is not implemented. I think doing it before bergi-cms would be too early.
 class Article(models.Model):
 	authors = models.ManyToManyField(Author)
 	cats = models.ManyToManyField(Cat)

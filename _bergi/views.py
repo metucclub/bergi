@@ -9,7 +9,7 @@ from .models import *
 import random
 
 # We need this to put "cats" in global context, so every view doesn't have to call Cat.objects.get for the navigation bar.
-# See how it is pipelined in ../bergi/settings.py:/context_processors/ .
+# See how it is pipelined in ../bergi/settings/base.py:/context_processors/ .
 def cats_on_navbar(request):
 	return {"cats": Cat.objects.filter(on_navbar=True)}
 
@@ -83,3 +83,29 @@ def cat(request, slug, page):
 	ctx["cat"] = cat
 
 	return render(request, "cat.html", ctx)
+
+# __search is a Postgres feature.
+# we check for it and provide a fallback for dev environments
+# XXX: remove magic number 10
+
+from django.db import connection
+if connection.vendor == "postgresql":
+	def lkup(key):
+		return Article.objects.filter(content__search=key)[:10]
+else:
+	def lkup(key):
+		return Article.objects.filter(content__icontains=key)[:10]
+
+def lookup(key):
+	if not key: return {}
+	else: return lkup(key)
+
+def search(request):
+	try:
+		q = request.GET["q"]
+	except KeyError:
+		q = ""
+
+	ctx = {"q": q,
+		"articles": lookup(q)}
+	return render(request, "search.html", ctx)
