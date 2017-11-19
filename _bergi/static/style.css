@@ -90,6 +90,11 @@ nav {
 .ingsoc > * {
 	padding: 0 8px;
 }
+.nav-search {
+	border-left: 1px solid #444;
+	padding-left: 12px!important;
+	padding-right: 16px!important;
+}
 a.fb:hover {
 	color: #3b5998;
 }
@@ -132,6 +137,9 @@ a.tw:hover {
 	}
 	.ingsoc a {
 		width: initial;
+	}
+	.nav-search {
+		display: none;
 	}
 }
 
@@ -199,7 +207,7 @@ a.tw:hover {
 	margin: auto;
 }
 .content {
-	max-width: 768px;
+	max-width: 767px;
 	padding-right: 32px;
 	margin: auto;
 }
