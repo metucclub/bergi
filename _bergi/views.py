@@ -70,14 +70,14 @@ def page_ctx(paginator, page):
 # PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
 # see urls.py:/arsiv/ .
 def archive(request, page):
-	paginator = Paginator(Article.objects.order_by("-date"), per_page=1, orphans=1)
+	paginator = Paginator(Article.objects.order_by("-date"), per_page=100, orphans=1)
 
 	ctx = page_ctx(paginator, page)
 	return render(request, "archive.html", ctx)
 
 def cat(request, slug, page):
 	cat = get_object_or_404(Cat, slug=slug)
-	paginator = Paginator(cat.article_set.order_by("-date"), per_page=1, orphans=1)
+	paginator = Paginator(cat.article_set.order_by("-date"), per_page=100, orphans=1)
 
 	ctx = page_ctx(paginator, page)
 	ctx["cat"] = cat

@@ -401,6 +401,7 @@ a.tw:hover {
 	margin-bottom: 30px;
 }
 .article-text code {
+	font-family: monospace;
 	font-size: 14px;
 	background-color: #f3f3f3;
 }

@@ -14,17 +14,16 @@ This repo is a Django setup to replace it.
 
 Migrations are not yet committed since the schema is likely to change.
 
-To take a look around with dummy [data](_bergi/fixtures/dummy.json),
+To take a look around with a slice of the [data](_bergi/fixtures/last_known_ok.json),
 
 ```
 pip3 install -r requirements.txt
 ./manage.py makemigrations _bergi
 ./manage.py migrate
-./manage.py loaddata dummy
+tar xzf last_known_ok.tar.gz
+./manage.py loaddata last_known_ok
 ./manage.py runserver
 ```
-
-We have two 2015 issues in the repository too. Load their data with `loaddata last_known_ok`.
 
 ## contribute
 
@@ -36,7 +35,7 @@ Here is a rough **roadmap** for anyone who wants to help:
 	- [x] cat(category)
 
 - [x] [views](_bergi/views.py)
-	- [ ] [index](_bergi/templates/index.html)
+	- [x] [index](_bergi/templates/index.html)
 		- [x] cover
 		- [x] content river
 		- [x] aside
