@@ -1,5 +1,6 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.template.defaultfilters import slugify
 
 from django.db.models import Q
 from django.core.paginator import *
@@ -44,6 +45,12 @@ def article(request, slug):
 	ctx = {"article": article,
 		"recommends": recommends}
 	return render(request, "article.html", ctx)
+
+# we have legacy articles with non-conforming slugs
+# tame them by redirecting permanently
+def irregular_article(request, raw_slug):
+	slug = slugify(raw_slug)
+	return redirect("article", slug, permanent=True)
 
 # generic fn to use with paginated views.
 # returns a context with the Page obj,

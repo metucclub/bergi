@@ -5,6 +5,7 @@ __pycache__/
 settings/prod.py
 
 db.sqlite3
+all.tar.gz
 
 media/*
 _bergi/fixtures/*
