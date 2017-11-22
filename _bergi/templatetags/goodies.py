@@ -1,6 +1,8 @@
 # _bergi's custom tags
 
 import markdown as Markdown
+from mdx_gfm import GithubFlavoredMarkdownExtension
+
 import datetime
 
 from django import template
@@ -10,7 +12,7 @@ register = template.Library()
 
 @register.filter
 def markdown(text):
-	return Markdown.markdown(text, safe_mode="escape")
+	return Markdown.markdown(text, extensions=[GithubFlavoredMarkdownExtension()])
 
 # only show past years
 @register.filter

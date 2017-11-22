@@ -367,7 +367,7 @@ a.tw:hover {
 	color: #7288e1;
 	text-decoration: underline;
 }
-.article-text h2 {
+.article-text h2, .article-text h3 {
 	font-family: bergi-liberation;
 	font-weight: bold;
 	font-size: 28px;

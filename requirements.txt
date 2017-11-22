@@ -1,5 +1,6 @@
 Django==1.11.4
-Markdown==2.6.9
+markdown==2.6.9
+py_gfm==0.1.3
 Pillow==4.0.0
 
 psycopg2==2.7.3
