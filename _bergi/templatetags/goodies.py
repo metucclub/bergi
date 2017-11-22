@@ -1,7 +1,7 @@
 # _bergi's custom tags
 
-import markdown as Markdown
-from mdx_gfm import GithubFlavoredMarkdownExtension
+import misaka
+from misaka import HtmlRenderer
 
 import datetime
 
@@ -10,9 +10,14 @@ from django.utils.dateformat import format
 
 register = template.Library()
 
+renderer = HtmlRenderer()
+md = misaka.Markdown(renderer,
+	extensions=misaka.EXT_FENCED_CODE | misaka.EXT_NO_INTRA_EMPHASIS | misaka.EXT_TABLES |
+			misaka.EXT_AUTOLINK | misaka.EXT_SPACE_HEADERS | misaka.EXT_STRIKETHROUGH | misaka.EXT_SUPERSCRIPT)
+
 @register.filter
 def markdown(text):
-	return Markdown.markdown(text, extensions=[GithubFlavoredMarkdownExtension()])
+	return md(text)
 
 # only show past years
 @register.filter
