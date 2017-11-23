@@ -10,7 +10,7 @@ from django.utils.dateformat import format
 
 register = template.Library()
 
-renderer = HtmlRenderer()
+renderer = HtmlRenderer(misaka.HTML_ESCAPE)
 md = misaka.Markdown(renderer,
 	extensions=misaka.EXT_FENCED_CODE | misaka.EXT_NO_INTRA_EMPHASIS | misaka.EXT_TABLES |
 			misaka.EXT_AUTOLINK | misaka.EXT_SPACE_HEADERS | misaka.EXT_STRIKETHROUGH | misaka.EXT_SUPERSCRIPT)
