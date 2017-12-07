@@ -15,6 +15,10 @@ import os
 # lol, 3 levels up
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# paginator settings: how many/page?
+PER_PAGE=20
+ORPHANS=6
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 

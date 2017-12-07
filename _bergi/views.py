@@ -4,6 +4,7 @@ from django.template.defaultfilters import slugify
 
 from django.db.models import Q
 from django.core.paginator import *
+from django.conf import settings
 
 from .models import *
 
@@ -20,7 +21,7 @@ def index(request):
 	articles = Article.objects.order_by("-date")
 	cover = articles[:3]
 	river = articles[3:13]
-	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river]))[:4]
+	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river])).order_by("-pop")[:4]
 	ctx = {"cover": cover, "river": river, "pop": pop}
 	return render(request, "index.html", ctx)
 
@@ -77,14 +78,14 @@ def page_ctx(paginator, page):
 # PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
 # see urls.py:/arsiv/ .
 def archive(request, page):
-	paginator = Paginator(Article.objects.order_by("-date"), per_page=100, orphans=1)
+	paginator = Paginator(Article.objects.order_by("-date"), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
 	return render(request, "archive.html", ctx)
 
 def cat(request, slug, page):
 	cat = get_object_or_404(Cat, slug=slug)
-	paginator = Paginator(cat.article_set.order_by("-date"), per_page=100, orphans=1)
+	paginator = Paginator(cat.article_set.order_by("-date"), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
 	ctx["cat"] = cat
