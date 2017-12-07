@@ -367,6 +367,7 @@ a.tw:hover {
 	color: #7288e1;
 	text-decoration: underline;
 }
+.article-text h1,
 .article-text h2,
 .article-text h3 {
 	font-family: bergi-liberation;
@@ -557,6 +558,17 @@ a.tw:hover {
 .paginator .disabled {
 	color: rgba(0, 0, 0, 0.7);
 	border: 1px solid #fff;
+}
+
+/* too many people to list */
+ul.team {
+	columns: 2;
+}
+ul.team li {
+	margin-bottom: 0px;
+}
+@media screen and (max-width: 479px){
+	ul.team { columns: 1; }
 }
 
 /* like $height=45px */

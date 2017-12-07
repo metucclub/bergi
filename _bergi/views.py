@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.defaultfilters import slugify
 
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.core.paginator import *
 from django.conf import settings
 
@@ -122,3 +122,11 @@ def search(request):
 	ctx = {"q": q,
 		"articles": lookup(q)}
 	return render(request, "search.html", ctx)
+
+# just render to whatever template
+def about(request):
+	return render(request, "about.html")
+
+def team(request):
+	ctx = {"staples": Author.objects.annotate(x=Count("article")).filter(x__gte=5)}
+	return render(request, "team.html", ctx)

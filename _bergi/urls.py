@@ -11,5 +11,7 @@ urlpatterns = [
 	url(r"^y/([-_a-zA-Z0-9]+)/$", views.irregular_article, name="irregular_article"),
 	url(r"^kat/([-a-z0-9]+)/([0-9]*)/?$", views.cat, name="cat"),
 	url(r"^arsiv/([0-9]*)/?$", views.archive, name="archive"),
+	url(r"^hakkinda/$", views.about, name="about"),
+	url(r"^kunye/$", views.team, name="team"),
 	url(r"^ara/$", views.search, name="search"),
 ]
