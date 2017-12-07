@@ -12,13 +12,10 @@ This repo is a Django setup to replace it.
 
 ## run
 
-Migrations are not yet committed since the schema is likely to change.
-
-To take a look around with a slice of the [data](_bergi/fixtures/last_known_ok.json),
+To take a look around with a slice of the data,
 
 ```
 pip3 install -r requirements.txt
-./manage.py makemigrations _bergi
 ./manage.py migrate
 tar xzf last_known_ok.tar.gz
 ./manage.py loaddata last_known_ok

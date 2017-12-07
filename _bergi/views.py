@@ -93,13 +93,18 @@ def cat(request, slug, page):
 	return render(request, "cat.html", ctx)
 
 # __search is a Postgres feature.
-# we check for it and provide a fallback for dev environments
 # XXX: remove magic number 10
-
 from django.db import connection
 if connection.vendor == "postgresql":
-	def lkup(key):
-		return Article.objects.filter(content__search=key)[:10]
+        from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+        def lkup(key):
+                query = SearchQuery(key, config="turkish")
+                vec = SearchVector("content", config="turkish")
+                rank = SearchRank(vec, query)
+                final = Article.objects.annotate(search=vec, rank=rank).filter(search=query).order_by("-rank")[:10]
+                return final
+
+# just icontains on sqlite
 else:
 	def lkup(key):
 		return Article.objects.filter(content__icontains=key)[:10]
