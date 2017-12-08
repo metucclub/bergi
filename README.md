@@ -1,10 +1,6 @@
 # bergi
 
-bergi is python-kosher name for e-bergi.
-
 e-bergi is a tech blog which resides [here](http://e-bergi.com).
-
-This repo is a Django setup to replace it.
 
 ## watch
 
@@ -24,40 +20,16 @@ tar xzf last_known_ok.tar.gz
 
 ## contribute
 
-Here is a rough **roadmap** for anyone who wants to help:
+bergi is mostly straightforward if you know Django. If you don't, it will become straightforward after you read the Django [tutorials](https://docs.djangoproject.com/en/1.11/intro/tutorial01/).
 
-- [x] [models](_bergi/models.py)
-	- [x] author
-	- [x] article
-	- [x] cat(category)
+You can get started by looking at the [urls.py](_bergi/urls.py) file to see what URL points to what.
 
-- [x] [views](_bergi/views.py)
-	- [x] [index](_bergi/templates/index.html)
-		- [x] cover
-		- [x] content river
-		- [x] aside
-		- [x] nav
-			- [x] ~~which cats to put on nav?~~ chosen ones
-			- [x] icons
-				- [ ] strip font-awesome
-			- [x] what else to put
-				- [x] "about"
-				- [x] "archives"
-		- [x] footer
-	- [x] [author](_bergi/templates/author.html)
-	- [x] [article](_bergi/templates/article.html)
-		- [x] sheet
-		- [x] recommends
-			- [ ] better recommendation algorithm?
-		- [ ] author box
-		- [ ] share buttons
-		- [ ] comments
-	- [x] [cat](_bergi/templates/cat.html)
+Here is a list of issues:
 
-- [ ] misc
-	- [ ] tags
-	- [x] archives
-		- [x] pagination for archives?
-	- [ ] about
-
-- [ ] cms
+- [ ] font-awesome is too big, we will need to throw out unused parts of it.
+- [ ] Some images are >1MB but only displayed 300x200. We are going to need Thumbnails or an image endpoint which delivers small or big.
+- [ ] The recommendation algorithm is ducktape. We need "More like this" functionality, or at least an exp(-Wt) function which throws old articles back.
+- [ ] The article page is somewhat dull. What about augmenting with share buttons and an author box at the article tail?
+- [ ] Comments for articles could be nice.
+- [ ] Do our articles need _tags_?
+- [ ] Articles don't write themselves. We need a [content management system](https://www.wikiwand.com/en/Content_management_system) to manage the workflow.
