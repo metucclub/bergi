@@ -17,8 +17,9 @@ def cats_on_navbar(request):
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
 # we don't place any post in Pop if it's already on the page.
+# XXX: remove magic numbers
 def index(request):
-	articles = Article.objects.order_by("-date")
+	articles = list(Article.objects.order_by("-date")[:13])
 	cover = articles[:3]
 	river = articles[3:13]
 	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river])).order_by("-pop")[:4]
