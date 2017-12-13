@@ -417,6 +417,22 @@ a.tw:hover {
 	font-size: 14px;
 	background-color: #f3f3f3;
 }
+.article-text table {
+	margin: auto;
+	margin-bottom: 30px;
+}
+.article-text th {
+	font-weight: bold;
+	background-color: #ddd;
+	padding: 4px;
+	min-width: 100px;
+}
+.article-text td {
+	padding: 8px;
+}
+.article-text tr:nth-child(even) > td {
+	background-color: #eee;
+}
 
 .article-tail {
 	padding: 24px;

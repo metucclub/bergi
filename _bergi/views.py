@@ -13,7 +13,7 @@ import random
 # We need this to put "cats" in global context, so every view doesn't have to call Cat.objects.get for the navigation bar.
 # See how it is pipelined in ../bergi/settings/base.py:/context_processors/ .
 def cats_on_navbar(request):
-	return {"cats": Cat.objects.filter(on_navbar=True)}
+	return {"cats": Cat.objects.filter(on_navbar=True).order_by("slug")}
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
 # we don't place any post in Pop if it's already on the page.
