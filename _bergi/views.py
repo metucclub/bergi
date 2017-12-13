@@ -78,8 +78,9 @@ def page_ctx(paginator, page):
 
 # PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
 # see urls.py:/arsiv/ .
+# XXX: it's blinking at you
 def archive(request, page):
-	paginator = Paginator(Article.objects.order_by("-date"), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
+	paginator = Paginator(Article.objects.order_by("-date")[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
 	return render(request, "archive.html", ctx)
