@@ -29,7 +29,8 @@ def index(request):
 def author(request, slug):
 	author = get_object_or_404(Author, slug=slug)
 	ctx = {"author": author,
-		"author_articles": author.article_set.order_by("-date")}
+		"author_articles": author.article_set.order_by("-date"),
+		"title": author.name}
 	return render(request, "author.html", ctx)
 
 # current recommendation algorithm is ducktape and close to random:
@@ -45,7 +46,8 @@ def article(request, slug):
 	recommends = r[:4]
 
 	ctx = {"article": article,
-		"recommends": recommends}
+		"recommends": recommends,
+		"title": article.title}
 	return render(request, "article.html", ctx)
 
 # we have legacy articles with non-conforming slugs
@@ -83,6 +85,8 @@ def archive(request, page):
 	paginator = Paginator(Article.objects.order_by("-date")[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
+	ctx["title"] = "Arşiv"
+
 	return render(request, "archive.html", ctx)
 
 def cat(request, slug, page):
@@ -91,6 +95,7 @@ def cat(request, slug, page):
 
 	ctx = page_ctx(paginator, page)
 	ctx["cat"] = cat
+	ctx["title"] = cat.name
 
 	return render(request, "cat.html", ctx)
 
@@ -122,13 +127,16 @@ def search(request):
 		q = ""
 
 	ctx = {"q": q,
-		"articles": lookup(q)}
+		"articles": lookup(q),
+		"title": q}
 	return render(request, "search.html", ctx)
 
 # just render to whatever template
 def about(request):
-	return render(request, "about.html")
+	ctx = {"title": "Hakkında"}
+	return render(request, "about.html", ctx)
 
 def team(request):
-	ctx = {"staples": Author.objects.annotate(x=Count("article")).filter(x__gte=5)}
+	ctx = {"staples": Author.objects.annotate(x=Count("article")).filter(x__gte=5),
+		"title": "Künye"}
 	return render(request, "team.html", ctx)
