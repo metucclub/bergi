@@ -3,7 +3,7 @@
 
 <div class="paginator">
 	{% if page_obj.has_previous %}
-		<a class="page" href="{{ page_obj.previous_page_number }}">
+		<a class="page" rel="prev" href="{{ page_obj.previous_page_number }}">
 			<span class="fa fa-caret-left"></span>&nbsp;Geri</a>
 	{% else %}
 		<span class="disabled page">
@@ -21,7 +21,7 @@
 	{% include "_page.html" with page=page_obj.paginator.num_pages %}
 
 	{% if page_obj.has_next %}
-		<a class="page" href="{{ page_obj.next_page_number }}">
+		<a class="page" rel="next" href="{{ page_obj.next_page_number }}">
 			İleri&nbsp;<span class="fa fa-caret-right"></span>
 		</a>
 	{% else %}
