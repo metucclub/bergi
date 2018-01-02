@@ -4,3 +4,7 @@ Pillow==4.0.0
 
 psycopg2==2.7.3
 pylibmc==1.5.2
+
+django_compressor==2.2
+csscompressor==0.9.5
+rjsmin==1.0.12

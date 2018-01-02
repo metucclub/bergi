@@ -8,4 +8,5 @@ db.sqlite3
 all.tar.gz
 
 media/*
+static/*
 _bergi/fixtures/*

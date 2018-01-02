@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 
 <!DOCTYPE html>
 <meta charset="utf-8">
@@ -6,22 +7,22 @@
 
 <title>{% if title %}{{ title }} · {% endif %}e-bergi</title>
 
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111707494-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-111707494-1');
 </script>
 
+{% compress css inline %}
 <link rel="stylesheet" href="{% static "pure-min.css" %}">
 <link rel="stylesheet" href="{% static "grids-responsive-min.css" %}">
-<link rel="stylesheet" href="{% static "font-awesome.css" %}">
 
+<link rel="stylesheet" href="{% static "font-awesome.css" %}">
 <link rel="stylesheet" href="{% static "bergi-fonts.css" %}">
 <link rel="stylesheet" href="{% static "style.css" %}">
+{% endcompress %}
 
 <link rel="icon" type="image/png" href="/media/favicon.png">
 
@@ -38,4 +39,6 @@
 	</ul>
 </footer>
 
+{% compress js inline %}
 <script src="{% static "main.js" %}"></script>
+{% endcompress %}

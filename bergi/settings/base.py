@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.postgres',
+	"compressor",
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+# django_compress
+STATICFILES_FINDERS = ["compressor.finders.CompressorFinder"]
+COMPRESS_CSS_FILTERS = ["compressor.filters.css_default.CssAbsoluteFilter",
+					"compressor.filters.cssmin.CSSCompressorFilter"]
+COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
