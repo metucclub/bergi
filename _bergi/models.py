@@ -17,10 +17,16 @@ class Cat(models.Model):
 	def __str__(self):
 		return self.name
 
-# XXX: draft is not implemented. I think doing it before bergi-cms would be too early.
+# so we don't .exclude(draft=True) everywhere on views.py.
+# XXX: maybe make this the default manager? currently everything in views.py uses this.
+class NondraftManager(models.Manager):
+	use_for_related_fields = True
+	def get_queryset(self):
+		return super().get_queryset().exclude(draft=True)
+
 class Article(models.Model):
-	authors = models.ManyToManyField(Author)
-	cats = models.ManyToManyField(Cat)
+	authors = models.ManyToManyField(Author, related_name="articles")
+	cats = models.ManyToManyField(Cat, related_name="articles")
 
 	slug = models.SlugField(max_length=63, unique=True)
 	title = models.CharField(max_length=255)
@@ -30,6 +36,12 @@ class Article(models.Model):
 	date = models.DateField()
 	draft = models.BooleanField(default=True)
 	pop = models.IntegerField(default=0)
+
+	objects = models.Manager()
+	nondraft = NondraftManager()
+
+	class Meta:
+		ordering = ["-date"]
 
 	def __str__(self):
 		return self.title

@@ -17,27 +17,29 @@ def cats_on_navbar(request):
 
 # get_object_or_404 looks like a custom function, but it is a Django shortcut.
 # we don't place any post in Pop if it's already on the page.
-# XXX: remove magic numbers
+# XXX: magic numbers all over the place
 def index(request):
-	articles = list(Article.objects.order_by("-date")[:13])
+	articles = list(Article.nondraft.all()[:13])
 	cover = articles[:3]
 	river = articles[3:13]
-	pop = Article.objects.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river])).order_by("-pop")[:4]
+	pop = Article.nondraft.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river])).order_by("-pop")[:4]
 	ctx = {"cover": cover, "river": river, "pop": pop}
 	return render(request, "index.html", ctx)
 
 def author(request, slug):
 	author = get_object_or_404(Author, slug=slug)
 	ctx = {"author": author,
-		"author_articles": author.article_set.order_by("-date"),
+		"author_articles": author.articles.exclude(draft=True),
 		"title": author.name}
 	return render(request, "author.html", ctx)
 
 # current recommendation algorithm is ducktape and close to random:
 # mix 4 popular articles and articles with same cat or author, draw 4.
+# XXX: currently people can take peeks at draft articles if they know the link.
+# fix is trivial(s/Article/Article.nondraft) but current state is useful for a preview-ish.
 def article(request, slug):
 	article = get_object_or_404(Article, slug=slug)
-	other_articles = Article.objects.exclude(slug=slug)
+	other_articles = Article.nondraft.exclude(slug=slug)
 
 	# see https://stackoverflow.com/questions/739776
 	r = other_articles.filter(Q(cats__in=article.cats.all()) | Q(authors__in=article.authors.all())) | other_articles.order_by("pop")[:4]
@@ -82,7 +84,7 @@ def page_ctx(paginator, page):
 # see urls.py:/arsiv/ .
 # XXX: it's blinking at you
 def archive(request, page):
-	paginator = Paginator(Article.objects.order_by("-date")[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
+	paginator = Paginator(Article.nondraft.all()[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
 	ctx["title"] = "Arşiv"
@@ -91,7 +93,7 @@ def archive(request, page):
 
 def cat(request, slug, page):
 	cat = get_object_or_404(Cat, slug=slug)
-	paginator = Paginator(cat.article_set.order_by("-date"), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
+	paginator = Paginator(cat.articles.exclude(draft=True), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
 	ctx["cat"] = cat
@@ -108,13 +110,13 @@ if connection.vendor == "postgresql":
                 query = SearchQuery(key, config="turkish")
                 vec = SearchVector("content", config="turkish")
                 rank = SearchRank(vec, query)
-                final = Article.objects.annotate(search=vec, rank=rank).filter(search=query).order_by("-rank")[:10]
+                final = Article.nondraft.annotate(search=vec, rank=rank).filter(search=query).order_by("-rank")[:10]
                 return final
 
 # just icontains on sqlite
 else:
 	def lkup(key):
-		return Article.objects.filter(content__icontains=key)[:10]
+		return Article.nondraft.filter(content__icontains=key)[:10]
 
 def lookup(key):
 	if not key: return {}
@@ -131,11 +133,11 @@ def search(request):
 		"title": q}
 	return render(request, "search.html", ctx)
 
-# just render to whatever template
 def about(request):
 	ctx = {"title": "Hakkında"}
 	return render(request, "about.html", ctx)
 
+# XXX: also counts draft articles.
 def team(request):
 	ctx = {"staples": Author.objects.annotate(x=Count("article")).filter(x__gte=5),
 		"title": "Künye"}
