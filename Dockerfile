@@ -16,6 +16,7 @@ RUN apk add --update \
 
 # no output otherwise
 ENV PYTHONUNBUFFERED 1
+ENV DJANGO_SETTINGS_MODULE bergi.settings.docker
 
 RUN pip install -r requirements.txt
 
@@ -23,6 +24,6 @@ RUN pip install -r requirements.txt
 CMD sh -c "./docker-wait-for.sh postgres:5432 &&\
 		./docker-wait-for.sh elasticsearch:9200 &&\
 		python3 manage.py migrate &&\
-		tar xzf all.tar.gz &&\
-		python3 manage.py loaddata all &&\
+		tar xzf last_known_ok.tar.gz &&\
+		python3 manage.py loaddata last_known_ok &&\
 		python3 manage.py runserver 0.0.0.0:8000"
