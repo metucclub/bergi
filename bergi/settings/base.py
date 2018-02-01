@@ -16,8 +16,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # paginator settings: how many/page?
-PER_PAGE=20
-ORPHANS=6
+PER_PAGE = 20
+ORPHANS = 6
+SUGGESTION_COUNT = 4
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'django.contrib.postgres',
 	"compressor",
 ]
 
@@ -83,10 +83,12 @@ DATABASES = {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
 		'NAME': 'bergi',
 		'USER': 'bergi',
-		'HOST': 'db',
+		'HOST': 'postgres',
 		'PORT': '5432',
     }
 }
+
+ES_HOSTS = ["elasticsearch:9200"]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

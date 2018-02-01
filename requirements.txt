@@ -6,3 +6,5 @@ psycopg2>=2.7.3
 pylibmc>=1.5.2
 
 django_compressor>=2.2
+
+elasticsearch-dsl>=5.0.0,<6.0.0

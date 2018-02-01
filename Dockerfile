@@ -20,8 +20,9 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install -r requirements.txt
 
 # migrate on start
-CMD sh -c "sleep 3 &&\
+CMD sh -c "./docker-wait-for.sh postgres:5432 &&\
+		./docker-wait-for.sh elasticsearch:9200 &&\
 		python3 manage.py migrate &&\
-		tar xzf last_known_ok.tar.gz &&\
-		python3 manage.py loaddata last_known_ok &&\
+		tar xzf all.tar.gz &&\
+		python3 manage.py loaddata all &&\
 		python3 manage.py runserver 0.0.0.0:8000"

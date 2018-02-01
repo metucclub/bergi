@@ -1,4 +1,5 @@
 from django.db import models
+from .search import ArticleIndex
 
 class Author(models.Model):
 	slug = models.SlugField(max_length=31, unique=True)
@@ -40,8 +41,32 @@ class Article(models.Model):
 	objects = models.Manager()
 	nondraft = NondraftManager()
 
+	def __str__(self):
+		return self.title
+
+	def to_search(self):
+		return ArticleIndex(
+			meta={"id": self.pk},
+			authors=" ".join([a.name for a in self.authors.all()]),
+			cats=" ".join([c.name for c in self.cats.all()]),
+			title=self.title,
+			content=self.content,
+			date=self.date)
+
 	class Meta:
 		ordering = ["-date"]
 
-	def __str__(self):
-		return self.title
+from django.db.models.signals import post_save, pre_delete
+from django.dispatch import receiver
+
+@receiver(post_save, sender=Article)
+def index_article(instance, **kwargs):
+	instance.to_search().save()
+
+# this handler should probably use update instead of save.
+# http://elasticsearch-dsl.readthedocs.io/en/5.3.0/api.html#elasticsearch_dsl.DocType.update
+@receiver(post_save, sender=Author)
+@receiver(post_save, sender=Cat)
+def index_authorcat(instance, **kwargs):
+	for a in instance.articles.exclude(draft=True):
+		a.to_search().save()

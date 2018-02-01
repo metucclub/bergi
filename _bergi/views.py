@@ -7,6 +7,7 @@ from django.core.paginator import *
 from django.conf import settings
 
 from .models import *
+from .search import recommends
 
 import random
 
@@ -33,27 +34,18 @@ def author(request, slug):
 		"title": author.name}
 	return render(request, "author.html", ctx)
 
-# current recommendation algorithm is ducktape and close to random:
-# mix 4 popular articles and articles with same cat or author, draw 4.
 # XXX: currently people can take peeks at draft articles if they know the link.
 # fix is trivial(s/Article/Article.nondraft) but current state is useful for a preview-ish.
 def article(request, slug):
 	article = get_object_or_404(Article, slug=slug)
-	other_articles = Article.nondraft.exclude(slug=slug)
-
-	# see https://stackoverflow.com/questions/739776
-	r = other_articles.filter(Q(cats__in=article.cats.all()) | Q(authors__in=article.authors.all())) | other_articles.order_by("pop")[:4]
-	r = list(r.distinct())
-	random.shuffle(r)
-	recommends = r[:4]
 
 	ctx = {"article": article,
-		"recommends": recommends,
+		"recommends": recommends(article),
 		"title": article.title}
 	return render(request, "article.html", ctx)
 
-# we have legacy articles with non-conforming slugs
-# tame them by redirecting permanently
+# we have legacy articles with non-conforming slugs.
+# tame them by redirecting permanently.
 def irregular_article(request, raw_slug):
 	slug = slugify(raw_slug)
 	return redirect("article", slug, permanent=True)
@@ -80,8 +72,6 @@ def page_ctx(paginator, page):
 		"left_ellipsis": left > 2,
 		"right_ellipsis": right < N}
 
-# PageNotAnInteger should mean an empty url like /arsiv/ or /arsiv//.
-# see urls.py:/arsiv/ .
 # XXX: it's blinking at you
 def archive(request, page):
 	paginator = Paginator(Article.nondraft.all()[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
@@ -101,36 +91,14 @@ def cat(request, slug, page):
 
 	return render(request, "cat.html", ctx)
 
-# __search is a Postgres feature.
-# XXX: remove magic number 10
-from django.db import connection
-if connection.vendor == "postgresql":
-        from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
-        def lkup(key):
-                query = SearchQuery(key, config="turkish")
-                vec = SearchVector("content", config="turkish")
-                rank = SearchRank(vec, query)
-                final = Article.nondraft.annotate(search=vec, rank=rank).filter(search=query).order_by("-rank")[:10]
-                return final
-
-# just icontains on sqlite
-else:
-	def lkup(key):
-		return Article.nondraft.filter(content__icontains=key)[:10]
-
-def lookup(key):
-	if not key: return {}
-	else: return lkup(key)
-
+from .search import search as S
 def search(request):
 	try:
 		q = request.GET["q"]
 	except KeyError:
 		q = ""
 
-	ctx = {"q": q,
-		"articles": lookup(q),
-		"title": q}
+	ctx = {"q": q, "articles": S(q), "title": q}
 	return render(request, "search.html", ctx)
 
 def about(request):
@@ -139,6 +107,6 @@ def about(request):
 
 # XXX: also counts draft articles.
 def team(request):
-	ctx = {"staples": Author.objects.annotate(x=Count("article")).filter(x__gte=5),
+	ctx = {"staples": Author.objects.annotate(x=Count("articles")).filter(x__gte=5),
 		"title": "Künye"}
 	return render(request, "team.html", ctx)

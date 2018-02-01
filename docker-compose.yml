@@ -1,6 +1,6 @@
 version: "3"
 services:
-  web:
+  django:
     restart: always
     build: .
     ports:
@@ -8,8 +8,18 @@ services:
     volumes:
       - .:/usr/src/app
     depends_on:
-      - db
-  db:
+      - postgres
+      - elasticsearch
+  postgres:
     image: postgres:10.1-alpine
     environment:
       POSTGRES_USER: bergi
+  elasticsearch:
+    image: elasticsearch:5-alpine
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
