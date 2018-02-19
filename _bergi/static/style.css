@@ -360,6 +360,15 @@ a.tw:hover {
 	margin: auto;
 	max-width: 100%;
 }
+.article-text img+em {
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 14px;
+	font-style: initial;
+	margin-top: 16px;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
 .article-text p {
 	margin-bottom: 30px;
 }
