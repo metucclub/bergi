@@ -376,6 +376,12 @@ a.tw:hover {
 	color: #7288e1;
 	text-decoration: underline;
 }
+.article-text sup {
+	font-size: 16px;
+}
+.article-text sup a {
+	text-decoration: none;
+}
 .article-text h1,
 .article-text h2,
 .article-text h3 {
