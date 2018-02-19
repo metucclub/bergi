@@ -23,7 +23,15 @@ AGEISM = {
 			"scale": "2555d",
 			"decay": 0.4
 		}
-	}
+	},
+}
+
+# to prevent the same articles from occurring everywhere.
+# see https://www.elastic.co/guide/en/elasticsearch/reference/5.3/query-dsl-function-score-query.html#function-random
+RANDOMISE = {
+	"random_score": {
+	},
+	"weight": "1"
 }
 
 class ArticleIndex(DocType):
@@ -61,10 +69,12 @@ def recommends(a):
 		"query": {
 			"function_score": {
 				"query": s.to_dict()["query"],
-				"functions": [AGEISM]
+				"functions": [AGEISM, RANDOMISE],
+				"score_mode": "sum"
 			}
 		}
 	}
 	r = connections.get_connection().search(index="article-index", body=search_body)
+	print([h["_score"] for h in r["hits"]["hits"]])
 	hits = r["hits"]["hits"][:settings.SUGGESTION_COUNT]
 	return [models.Article.nondraft.get(pk=hit["_id"]) for hit in hits]
