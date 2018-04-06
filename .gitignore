@@ -2,10 +2,11 @@
 *.pyc
 __pycache__/
 
-settings/prod.py
+bergi/settings/prod.py
 
 db.sqlite3
 all.tar.gz
+ENV/
 
 media/*
 static/*
