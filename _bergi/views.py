@@ -25,14 +25,14 @@ def index(request):
 	river = articles[3:13]
 	pop = Article.nondraft.exclude(pk__in=([o.pk for o in cover]+[o.pk for o in river])).order_by("-pop")[:4]
 	ctx = {"cover": cover, "river": river, "pop": pop}
-	return render(request, "index.html", ctx)
+	return render(request, "_bergi/index.html", ctx)
 
 def author(request, slug):
 	author = get_object_or_404(Author, slug=slug)
 	ctx = {"author": author,
 		"author_articles": author.articles.exclude(draft=True),
 		"title": author.name}
-	return render(request, "author.html", ctx)
+	return render(request, "_bergi/author.html", ctx)
 
 # XXX: currently people can take peeks at draft articles if they know the link.
 # fix is trivial(s/Article/Article.nondraft) but current state is useful for a preview-ish.
@@ -42,7 +42,7 @@ def article(request, slug):
 	ctx = {"article": article,
 		"recommends": recommends(article),
 		"title": article.title}
-	return render(request, "article.html", ctx)
+	return render(request, "_bergi/article.html", ctx)
 
 # we have legacy articles with non-conforming slugs.
 # tame them by redirecting permanently.
@@ -52,7 +52,7 @@ def irregular_article(request, raw_slug):
 
 # generic fn to use with paginated views.
 # returns a context with the Page obj,
-# a range for templates/_paginator.html and whether to show ellipses(…).
+# a range for templates/_bergi/_paginator.html and whether to show ellipses(…).
 def page_ctx(paginator, page):
 	try:
 		page = paginator.page(page)
@@ -79,7 +79,7 @@ def archive(request, page):
 	ctx = page_ctx(paginator, page)
 	ctx["title"] = "Arşiv"
 
-	return render(request, "archive.html", ctx)
+	return render(request, "_bergi/archive.html", ctx)
 
 def cat(request, slug, page):
 	cat = get_object_or_404(Cat, slug=slug)
@@ -89,7 +89,7 @@ def cat(request, slug, page):
 	ctx["cat"] = cat
 	ctx["title"] = cat.name
 
-	return render(request, "cat.html", ctx)
+	return render(request, "_bergi/cat.html", ctx)
 
 from .search import search as S
 def search(request):
@@ -99,14 +99,14 @@ def search(request):
 		q = ""
 
 	ctx = {"q": q, "articles": S(q), "title": q}
-	return render(request, "search.html", ctx)
+	return render(request, "_bergi/search.html", ctx)
 
 def about(request):
 	ctx = {"title": "Hakkında"}
-	return render(request, "about.html", ctx)
+	return render(request, "_bergi/about.html", ctx)
 
 # XXX: also counts draft articles.
 def team(request):
 	ctx = {"staples": Author.objects.annotate(x=Count("articles")).filter(x__gte=5),
 		"title": "Künye"}
-	return render(request, "team.html", ctx)
+	return render(request, "_bergi/team.html", ctx)

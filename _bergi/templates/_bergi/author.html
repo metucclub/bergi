@@ -1,4 +1,4 @@
-{% extends "__base.html" %}
+{% extends "_bergi/__base.html" %}
 {% block body %}
 
 <div class="pure-g sheet">
@@ -13,7 +13,7 @@
 		<div class="author-posts">
 		<header><h1>Yazılar</h1></header>
 {% for article in author_articles %}
-			{% include "_river_post.html" with article=article %}
+			{% include "_bergi/_river_post.html" with article=article %}
 {% endfor %}
 		</div>
 	</div>

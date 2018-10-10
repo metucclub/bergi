@@ -1,4 +1,4 @@
-{% extends "__base.html" %}
+{% extends "_bergi/__base.html" %}
 {% block body %}
 
 {% load goodies %}
@@ -7,7 +7,7 @@
 	<div class="pure-u-1 pure-u-lg-3-4 content article">
 		<header class="article-hero">
 			<h1>{{ article.title }}</h1>
-			<div class="article-byline">{% include "_byline.html" %}</div>
+			<div class="article-byline">{% include "_bergi/_byline.html" %}</div>
 		</header>
 		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
@@ -38,7 +38,7 @@
 			<h1>Önerilenler</h1>
 		</header>
 {% for r_article in recommends %}
-		{% include "_aside_post.html" with article=r_article %}
+		{% include "_bergi/_aside_post.html" with article=r_article %}
 {% endfor %}
 	</div>
 </div>

@@ -1,4 +1,4 @@
-{% extends "__base.html" %}
+{% extends "_bergi/__base.html" %}
 {% block body %}
 
 <div class="pure-g sheet">
@@ -15,7 +15,7 @@
 		</form>
 		</div>
 {% for article in articles %}
-		{% include "_river_post.html" with article=article %}
+		{% include "_bergi/_river_post.html" with article=article %}
 {% endfor %}
 	</div>
 	<div class="pure-u-1 pure-u-lg-1-4 aside">
