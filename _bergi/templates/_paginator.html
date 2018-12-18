@@ -4,21 +4,26 @@
 <div class="paginator">
 	{% if page_obj.has_previous %}
 		<a class="page" rel="prev" href="{{ page_obj.previous_page_number }}">
-			<span class="fa fa-caret-left"></span>&nbsp;Geri</a>
+			<span class="fa fa-caret-left"></span>&nbsp;Geri
+		</a>
 	{% else %}
 		<span class="disabled page">
-			<span class="fa fa-caret-left"></span>&nbsp;Geri</span>
+			<span class="fa fa-caret-left"></span>&nbsp;Geri
+		</span>
 	{% endif %}
 
 	{% include "_page.html" with page=1 %}
+
 	{% if left_ellipsis %} … {% endif %}
 
-{% for page in range %}
-	{% include "_page.html" with page=page %}
-{% endfor %}
+	{% for page in range %}
+		{% include "_page.html" with page=page %}
+	{% endfor %}
 
 	{% if right_ellipsis %} … {% endif %}
+
 	{% include "_page.html" with page=page_obj.paginator.num_pages %}
+
 
 	{% if page_obj.has_next %}
 		<a class="page" rel="next" href="{{ page_obj.next_page_number }}">
