@@ -1,0 +1,27 @@
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - IMAGE_NAME=oznakn/bergi
+    - REGISTRY_USER=oznakn
+    - secure: "INpTHQLfcO6kS/Ri5lDLsnUOGBUf8d3yb6zUWVNk7wM3DzVjnJFpBul0hTq+4Ouon/lBqYine5hdBG3GvrFGoYSFFvPweFxzbSBKUM7u1LTESZKL9Xy/X0Rg7DtWJKe1lng6OWzAwr6IIIPsbNDnmMbv+6Hi3XLL24PFG7Oi/F3aDL7vTOvHlbmBCeIlk9Ee11s+zSgk5/nbSrMsjkohR9OYFWtglxxVqBtBTL2dzmIzzB+6KJN1cnuNKHLeVVWHPoJjQVPbiAKf6NcjUK0FjOtdm2RuExAdzryChXVpqL3QeYHUWC0lRtbUpcwRxQQjLRYqrgfLs7sYJ4ortF80kDIaFFPPkKRJRq+PmNEu3skH1+qmJDqOjrm8MkBSUSeWxCrUM7kV49Jq7GaB76A8QEZd2vKmlBH0L06JL4vdk6i6y/13U5cQZcykmh35I92RchS3cRljolgVm2G7Rw1GPCHAOIms/x607vMSpLr7qVyZ6X7RGq+5+1MLThVRpYqck5m9EOuAryOLN6lZFS4I1Ikr33X6OYFsBbqnmtADoz1hUzyzCmgFQQyOhImr3tcasuKpYjAZ8w1ELw8D1GK5uU78dC0zsp0bUuUz1oMIIZWqlV2uHp2OuG3fsIjNafy3Xu6wgMKzfSXzd4LV93nSLxLI9XsmsltwTUV78h8gJYc="
+
+before_script:
+  - docker pull "$IMAGE_NAME" || true
+
+script:
+  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest"
+  on:
+    branch: master
