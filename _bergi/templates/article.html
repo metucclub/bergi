@@ -3,44 +3,51 @@
 
 {% load goodies %}
 
-<div class="pure-g sheet">
-	<div class="pure-u-1 pure-u-lg-3-4 content article">
+<div class="sheet">
+	<div class="content article">
 		<header class="article-hero">
 			<h1>{{ article.title }}</h1>
 			<div class="article-byline">{% include "_byline.html" %}</div>
 		</header>
+
 		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
+
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
-			<div style="display: flex; justify-content: center; margin-top: 16px" class="a2a_kit a2a_kit_size_32 a2a_default_style">
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_facebook"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_twitter"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_google_plus"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_linkedin"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_reddit"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_email"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_whatsapp"></a>
-			<a style="padding-right: 4px; padding-left: 4px" class="a2a_button_telegram"></a>
+
+		<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+			<a class="a2a_button a2a_button_facebook"></a>
+			<a class="a2a_button a2a_button_twitter"></a>
+			<a class="a2a_button a2a_button_google_plus"></a>
+			<a class="a2a_button a2a_button_linkedin"></a>
+			<a class="a2a_button a2a_button_reddit"></a>
+			<a class="a2a_button a2a_button_email"></a>
+			<a class="a2a_button a2a_button_whatsapp"></a>
+			<a class="a2a_button a2a_button_telegram"></a>
 		</div>
-		<script async src="https://static.addtoany.com/menu/page.js"></script>
-		<div class="pure-g article-tail">
-{% for r_article in recommends %}
-			<div class="pure-u-1-2 pure-u-sm-1-4 article-tail-post"
-				style="background-image: url('{{ r_article.img.url }}')">
-				<a href="{% url "article" r_article.slug %}">
-				<header class="article-tail-title"><h6>{{ r_article.title }}</h6></header>
-				</a>
-			</div>
-{% endfor %}
+
+		<div class="article-tail">
+			{% for r_article in recommends %}
+				<div class="article-tail-post" style="background-image: url('{{ r_article.img.url }}')">
+					<a href="{% url 'article' r_article.slug %}">
+						<header class="article-tail-title"><h6>{{ r_article.title }}</h6></header>
+					</a>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
-	<div class="pure-u-1 pure-u-lg-1-4 aside article-aside">
+
+
+	<div class="aside article-aside">
 		<header class="aside-hero">
 			<h1>Önerilenler</h1>
 		</header>
-{% for r_article in recommends %}
-		{% include "_aside_post.html" with article=r_article %}
-{% endfor %}
+
+		{% for r_article in recommends %}
+			{% include "_aside_post.html" with article=r_article %}
+		{% endfor %}
 	</div>
+
+	<script async defer src="https://static.addtoany.com/menu/page.js"></script>
 </div>
 
 {% endblock body %}

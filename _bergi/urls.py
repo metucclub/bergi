@@ -1,16 +1,14 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 
 from . import views
 
 urlpatterns = [
-	url(r"^$", views.index),
-	url(r"^yazar/([-a-z0-9]+)/$", views.author, name="author"),
-	url(r"^y/([-_a-z0-9]+)/$", views.article, name="article"),
-	url(r"^y/([+-_\w0-9]+)/$", views.irregular_article),
-	url(r"^[0-9]{4}/[a-zA-Z]+/([+-_\w0-9]+)/$", views.irregular_article),
-	url(r"^kat/([-a-z0-9]+)/([0-9]*)/?$", views.cat, name="cat"),
-	url(r"^arsiv/([0-9]*)/?$", views.archive, name="archive"),
-	url(r"^hakkinda/$", views.about, name="about"),
-	url(r"^kunye/$", views.team, name="team"),
-	url(r"^ara/$", views.search, name="search"),
+	path('', views.index),
+	path('yazar/<slug:slug>/', views.author, name='author'),
+	path('y/<slug:slug>/', views.article, name='article'),
+	path('kat/<slug:slug>/<int:page>/?', views.cat, name='cat'),
+	path('arsiv/<int:page>/?', views.archive, name='archive'),
+	path('hakkinda/', views.about, name='about'),
+	path('kunye/', views.team, name='team'),
+	path('ara/', views.search, name='search'),
 ]

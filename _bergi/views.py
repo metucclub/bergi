@@ -44,12 +44,6 @@ def article(request, slug):
 		"title": article.title}
 	return render(request, "article.html", ctx)
 
-# we have legacy articles with non-conforming slugs.
-# tame them by redirecting permanently.
-def irregular_article(request, raw_slug):
-	slug = slugify(raw_slug)
-	return redirect("article", slug, permanent=True)
-
 # generic fn to use with paginated views.
 # returns a context with the Page obj,
 # a range for templates/_paginator.html and whether to show ellipses(…).

@@ -2,12 +2,7 @@
 *.pyc
 __pycache__/
 
-bergi/settings/prod.py
+/media/
+/static/
 
-db.sqlite3
-all.tar.gz
-ENV/
-
-media/*
-static/*
-_bergi/fixtures/*
+db.zip

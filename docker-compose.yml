@@ -1,25 +1,54 @@
+# docker services for application bergi
+
 version: "3"
+
+volumes:
+  staticfiles:
+  elasticsearchdata:
+  postgresdata:
+
 services:
-  django:
-    restart: always
-    build: .
+  server:
+    image: bergi
+    command: /bin/sh -c "
+      ./docker-wait-for.sh postgres:5432 &&
+      ./docker-wait-for.sh elasticsearch:9200 &&
+      python manage.py runserver 0.0.0.0:8080"
     ports:
-      - "8000:8000"
+      - "${server_port-8080}:8080"
     volumes:
-      - .:/usr/src/app
-    depends_on:
-      - postgres
-      - elasticsearch
+      - "${media_folder-../bergi-media}:/app/media"
+      - staticfiles:/app/static
+    deploy:
+      replicas: "${server_replica_count-3}"
+
+  build:
+    image: bergi
+    command: /bin/sh -c "
+        ./docker-wait-for.sh postgres:5432 &&
+        ./docker-wait-for.sh elasticsearch:9200 &&
+        python manage.py migrate &&
+        ./restore-data.sh db.zip &&
+        python manage.py collectstatic --no-input"
+    volumes:
+      - ${media_folder-../bergi-media}:/app/media
+      - staticfiles:/app/static
+    deploy:
+      restart_policy:
+        condition: none
+
   postgres:
-    image: postgres:10.1-alpine
+    image: postgres:11-alpine
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: bergi
+      POSTGRES_USER: "${postgres_user-bergi}"
+      POSTGRES_DB: "${postgres_db-bergi}"
+
   elasticsearch:
     image: elasticsearch:5-alpine
+    volumes:
+      - elasticsearchdata:/usr/share/elasticsearch/data
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1

@@ -1,9 +1,7 @@
 FROM python:3.6-alpine
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-ADD . /usr/src/app/
+RUN mkdir /app
+WORKDIR /app
 
 # we have to compile stuff there
 RUN apk add --update \
@@ -12,19 +10,20 @@ RUN apk add --update \
 	postgresql-dev \
 	libmemcached-dev \
 	cyrus-sasl-dev \
-	libjpeg-turbo-dev
+	libjpeg-turbo-dev \
+	python-dev \
+	py-pip \
+	jpeg-dev \
+	zlib-dev
+
+ENV LIBRARY_PATH=/lib:/usr/lib
 
 # no output otherwise
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_SETTINGS_MODULE bergi.settings.docker
 
+ADD requirements.txt .
+
 RUN pip install -r requirements.txt
 
-# migrate on start
-CMD sh -c "./docker-wait-for.sh postgres:5432 &&\
-		./docker-wait-for.sh elasticsearch:9200 &&\
-		python3 manage.py migrate &&\
-		tar xzf last_known_ok.tar.gz &&\
-		echo "yes" | python3 manage.py flush &&\
-		python3 manage.py loaddata last_known_ok &&\
-		python3 manage.py runserver 0.0.0.0:8000"
+ADD . .
