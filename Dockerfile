@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3-alpine
 
 RUN mkdir /app
 WORKDIR /app
@@ -11,10 +11,12 @@ RUN apk add --update \
 	libmemcached-dev \
 	cyrus-sasl-dev \
 	libjpeg-turbo-dev \
-	python-dev \
-	py-pip \
 	jpeg-dev \
-	zlib-dev
+	zlib-dev \
+	bash \
+	zip \
+	unzip \
+	git
 
 ENV LIBRARY_PATH=/lib:/usr/lib
 
@@ -22,8 +24,15 @@ ENV LIBRARY_PATH=/lib:/usr/lib
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_SETTINGS_MODULE bergi.settings.docker
 
-ADD requirements.txt .
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-ADD . .
+COPY . .
+
+RUN git clone https://github.com/oznakn/docker-scripts && \
+  	mv docker-scripts/*.sh . && \
+  	rm -rf docker-scripts && \
+	mkdir -p ./db
+
+RUN chmod a+x backup-data.sh restore-data.sh docker-wait-for-it.sh

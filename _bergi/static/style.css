@@ -655,11 +655,12 @@ a.tw:hover {
 	background-color: #f3f3f3;
 	padding: 20px;
 	margin-bottom: 30px;
+	font-size: 16px;
 }
 
 .article-text code {
 	font-family: monospace;
-	font-size: 14px;
+	font-size: 16px;
 	background-color: #f3f3f3;
 }
 
@@ -688,15 +689,16 @@ a.tw:hover {
 
 	display: flex;
 	flex-flow: row nowrap;
+	justify-content: center;
 }
 
 .article-tail-post {
 	position: relative;
-	height: 100px;
+	height: 120px;
 	background-size: cover;
 	background-position: center center;
 
-	flex-basis: 25%;
+	flex-basis: 33%;
 }
 
 .article-tail-post a {

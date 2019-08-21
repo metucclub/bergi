@@ -1,17 +1,17 @@
+import os
 from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['e-bergi.com', 'www.e-bergi.com', 'ebergi.com', 'www.ebergi.com']
 
 DATABASES = {
-    'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'bergi',
-		'USER': 'bergi',
-		'HOST': 'postgres',
-		'PORT': '5432',
+    "default": {
+		"ENGINE": "django.db.backends.postgresql_psycopg2",
+		"NAME": os.environ.get("db_name"),
+		"USER": os.environ.get("db_user"),
+		"HOST": os.environ.get("db_host"),
     }
 }
 
-ES_HOSTS = ["elasticsearch:9200"]
+ES_HOSTS = [os.environ.get("elasticsearch_host") + ":9200"]

@@ -4,5 +4,4 @@ __pycache__/
 
 /media/
 /static/
-
-db.zip
+db.sqlite3

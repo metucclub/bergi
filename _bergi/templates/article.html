@@ -2,6 +2,7 @@
 {% block body %}
 
 {% load goodies %}
+{% load thumbnail %}
 
 <div class="sheet">
 	<div class="content article">
@@ -10,7 +11,9 @@
 			<div class="article-byline">{% include "_byline.html" %}</div>
 		</header>
 
-		<div class="article-img" style="background-image:url('{{ article.img.url }}')"></div>
+		{% thumbnail article.img "800x450" crop="center" quality=80 as img %}
+			<div class="article-img" style="background-image:url('{{ img.url }}')"></div>
+		{% endthumbnail %}
 
 		<div class="article-text">{{ article.content | markdown | safe }}</div>
 
@@ -27,11 +30,14 @@
 
 		<div class="article-tail">
 			{% for r_article in recommends %}
-				<div class="article-tail-post" style="background-image: url('{{ r_article.img.url }}')">
-					<a href="{% url 'article' r_article.slug %}">
-						<header class="article-tail-title"><h6>{{ r_article.title }}</h6></header>
-					</a>
-				</div>
+				{% thumbnail r_article.img "210x120" crop="center" quality=80 as r_img %}
+					<div class="article-tail-post" style="background-image: url('{{ r_img.url }}')">
+						<a href="{% url 'article' r_article.slug %}">
+							<header class="article-tail-title"><h6>{{ r_article.title }}</h6></header>
+						</a>
+					</div>
+				{% endthumbnail %}
+
 			{% endfor %}
 		</div>
 	</div>

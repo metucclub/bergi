@@ -42,8 +42,11 @@ class ArticleIndex(DocType):
 	content = Text(analyzer="turkish")
 	date = Date()
 
+	class Index:
+		name =  "article-index"
+
 	class Meta:
-		index = 'article-index'
+		index = "article-index"
 
 from . import models
 def index_all():

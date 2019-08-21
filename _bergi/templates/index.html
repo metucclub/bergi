@@ -1,13 +1,21 @@
 {% extends "__base.html" %}
+
 {% block body %}
+
 
 <div class="cover">
 	<div class="cover-left">
-		{% include "_cover_post.html" with article=cover.0 %}
+		{% if cover|length > 0 %}
+			{% include "_cover_post.html" with article=cover.0 %}
+		{% endif %}
 	</div>
 	<div class="cover-right">
-		{% include "_cover_post.html" with article=cover.1 %}
-		{% include "_cover_post.html" with article=cover.2 %}
+		{% if cover|length > 1 %}
+			{% include "_cover_post.html" with article=cover.1 %}
+		{% endif %}
+		{% if cover|length > 2 %}
+			{% include "_cover_post.html" with article=cover.2 %}
+		{% endif %}
 	</div>
 </div>
 
