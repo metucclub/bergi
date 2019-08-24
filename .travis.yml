@@ -10,7 +10,7 @@ before_script:
   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 
 script:
-  - docker pull "${IMAGE_NAME}"
+  - docker pull "${IMAGE_NAME}" || true
   - docker build --cache-from "${IMAGE_NAME}:latest" -t "${IMAGE_NAME}" .
 
 after_success:

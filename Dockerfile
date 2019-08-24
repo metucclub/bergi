@@ -31,8 +31,8 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN git clone https://github.com/oznakn/docker-scripts && \
-  	mv docker-scripts/*.sh . && \
-  	rm -rf docker-scripts && \
+	mv docker-scripts/*.sh . && \
+	rm -rf docker-scripts && \
 	mkdir -p ./db
 
 RUN chmod a+x backup-data.sh restore-data.sh docker-wait-for-it.sh
