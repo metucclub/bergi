@@ -3,7 +3,7 @@
 <div class="river-post">
 	<div class="river-img-wrapper">
 		<a href="{% url 'article' article.slug %}">
-		{% thumbnail article.img "210x120" crop="center" quality=80 as img %}
+		{% thumbnail article.img "210x120" crop="noop" quality=80 as img %}
 			<div class="river-img" style="background-image: url('{{ img.url }}');"></div>
 		{% endthumbnail %}
 		</a>

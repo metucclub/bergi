@@ -2,7 +2,7 @@
 
 <a href="{% url "article" article.slug %}">
 	<div class="aside-post">
-		{% thumbnail article.img "210x120" crop="center" quality=80 as img %}
+		{% thumbnail article.img "210x120" crop="noop" quality=80 as img %}
 			<div class="aside-img" style="background-image: url('{{ img.url }}')"></div>
 		{% endthumbnail %}
 		<div class="aside-title">{{ article.title }}</div>

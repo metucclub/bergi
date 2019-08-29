@@ -27,7 +27,7 @@ class CustomRenderer(misaka.HtmlRenderer):
 			file = default_storage.open(raw_url.split("/")[-1])
 
 			if file is not None:
-				img = get_thumbnail(file, "800x450", crop="center", quality=80)
+				img = get_thumbnail(file, "800x450", crop="noop", quality=80)
 
 				if img is not None:
 					img_url = img.url
@@ -44,8 +44,7 @@ class CustomRenderer(misaka.HtmlRenderer):
 		if lexer:
 			return highlight(text, lexer, html_formatter)
 
-		return "\n<pre><code>{}</code></pre>\n".format(
-							misaka.escape_html(text.strip()))
+		return "\n<pre><code>{}</code></pre>\n".format(misaka.escape_html(text.strip()))
 
 
 renderer = CustomRenderer(misaka.HTML_ESCAPE)

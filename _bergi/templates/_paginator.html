@@ -12,15 +12,16 @@
 		</span>
 	{% endif %}
 
+
 	{% include "_page.html" with page=1 %}
 
-	{% if left_ellipsis %} … {% endif %}
+	{% if left_ellipsis %} <span>…</span> {% endif %}
 
 	{% for page in range %}
 		{% include "_page.html" with page=page %}
 	{% endfor %}
 
-	{% if right_ellipsis %} … {% endif %}
+	{% if right_ellipsis %} <span>…</span> {% endif %}
 
 	{% include "_page.html" with page=page_obj.paginator.num_pages %}
 

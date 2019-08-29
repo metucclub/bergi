@@ -845,18 +845,25 @@ a.tw:hover {
 
 
 .paginator {
+	display: flex;
+
 	margin: 20px 14px;
-	line-height: 1.8;
+	line-height: 1.2;
 }
 
 .paginator .page {
 	padding: 4px;
+	margin-right: 4px;
 	border: 1px solid #ddd;
 }
 
 .paginator .disabled {
 	color: rgba(0, 0, 0, 0.7);
 	border: 1px solid #fff;
+}
+
+.paginator>span {
+	margin-right: 4px;
 }
 
 /* too many people to list */
@@ -911,7 +918,7 @@ body {
 .a2a_kit {
 	display: flex;
 	justify-content: center;
-	margin-top: 16px;
+	margin-top: 30px;
 }
 
 .a2a_button {
