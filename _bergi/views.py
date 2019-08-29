@@ -67,7 +67,7 @@ def page_ctx(paginator, page):
 		"right_ellipsis": right < N}
 
 # XXX: it's blinking at you
-def archive(request, page):
+def archive(request, page = 1):
 	paginator = Paginator(Article.nondraft.all()[13:], per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 
 	ctx = page_ctx(paginator, page)
@@ -75,7 +75,7 @@ def archive(request, page):
 
 	return render(request, "archive.html", ctx)
 
-def cat(request, slug, page):
+def cat(request, slug, page = 1):
 	cat = get_object_or_404(Cat, slug=slug)
 	paginator = Paginator(cat.articles.exclude(draft=True), per_page=settings.PER_PAGE, orphans=settings.ORPHANS)
 

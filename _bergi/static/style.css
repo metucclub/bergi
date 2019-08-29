@@ -430,7 +430,7 @@ a.tw:hover {
 }
 
 .river-header {
-	flex-grow: 70%;
+	flex-basis: 70%;
 	padding: 12px;
 }
 
