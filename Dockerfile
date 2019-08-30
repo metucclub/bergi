@@ -16,7 +16,9 @@ RUN apk add --update \
 	bash \
 	zip \
 	unzip \
-	git
+	git \
+	nano \
+	vim
 
 ENV LIBRARY_PATH=/lib:/usr/lib
 
