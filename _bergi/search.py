@@ -80,4 +80,5 @@ def recommends(a):
 	r = connections.get_connection().search(index="article-index", body=search_body)
 	print([h["_score"] for h in r["hits"]["hits"]])
 	hits = r["hits"]["hits"][:settings.SUGGESTION_COUNT]
-	return [models.Article.nondraft.get(pk=hit["_id"]) for hit in hits]
+
+	return filter(lambda a: a is not None, [models.Article.nondraft.filter(pk=hit["_id"]).first() for hit in hits])
