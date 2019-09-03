@@ -81,4 +81,4 @@ def recommends(a):
 	print([h["_score"] for h in r["hits"]["hits"]])
 	hits = r["hits"]["hits"][:settings.SUGGESTION_COUNT]
 
-	return filter(lambda a: a is not None, [models.Article.nondraft.filter(pk=hit["_id"]).first() for hit in hits])
+	return list(filter(lambda a: a is not None, [models.Article.nondraft.filter(pk=hit["_id"]).first() for hit in hits]))
