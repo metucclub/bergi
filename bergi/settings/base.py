@@ -29,12 +29,11 @@ SECRET_KEY = "xg%vwzv6r+a65jnf*b4=ngpq^9gc3f=_fgs+24q9#07iqadepj"
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
-	"_bergi.apps.config",
 	"django.contrib.admin",
 	"django.contrib.auth",
 	"django.contrib.contenttypes",
@@ -42,7 +41,9 @@ INSTALLED_APPS = [
 	"django.contrib.messages",
 	"django.contrib.staticfiles",
 	"compressor",
+	"martor",
 	"sorl.thumbnail",
+	"_bergi",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,11 @@ STATICFILES_FINDERS = [
 COMPRESS_CSS_FILTERS = ["compressor.filters.css_default.CssAbsoluteFilter",
 					"compressor.filters.cssmin.CSSCompressorFilter"]
 COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
+
+MARTOR_ENABLE_CONFIGS = {
+    "imgur": "false",
+    "mention": "false",
+	"jquery": "true",
+	"living": "false",
+	"spellcheck": "true",
+}

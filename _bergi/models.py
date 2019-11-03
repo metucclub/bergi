@@ -1,4 +1,5 @@
 from django.db import models
+from martor.models import MartorField
 from .search import ArticleIndex
 
 class Author(models.Model):
@@ -31,10 +32,11 @@ class Article(models.Model):
 
 	slug = models.SlugField(max_length=63, unique=True)
 	title = models.CharField(max_length=255)
-	content = models.TextField()
+	content = MartorField()
 	img = models.ImageField()
 
 	date = models.DateField()
+	featured = models.BooleanField(default=False)
 	draft = models.BooleanField(default=True)
 	pop = models.IntegerField(default=0)
 
@@ -54,7 +56,7 @@ class Article(models.Model):
 			date=self.date)
 
 	class Meta:
-		ordering = ["-date"]
+		ordering = ["-featured", "-date", "-pk"]
 
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
