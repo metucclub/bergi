@@ -33,4 +33,3 @@ bergi is mostly straightforward if you know Django. If you don't, it will become
 You can get started by looking at the [urls.py](_bergi/urls.py) file to see what URL points to what.
 
 A list of issues to tackle are in the [issue tracker](https://github.com/duck2/bergi/issues).
-dasfasf
