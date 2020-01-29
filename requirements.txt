@@ -1,5 +1,5 @@
 csscompressor
-Django<3.0.0
+Django>=2.2.9,<3.0.0
 django-compressor
 elasticsearch>=5.0.0,<6.0.0
 elasticsearch-dsl>=5.0.0,<6.0.0
