@@ -32,7 +32,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN git clone https://github.com/oznakn/docker-scripts && \
+RUN git clone https://github.com/metucclub/docker-scripts && \
 	mv docker-scripts/*.sh . && \
 	rm -rf docker-scripts && \
 	mkdir -p ./db

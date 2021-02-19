@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    command: /bin/sh -c "
+      ./docker-wait-for-it.sh -h postgres -t 0 -p 5432 &&
+      ./docker-wait-for-it.sh -h elasticsearch -t 0 -p 9200 &&
+      python manage.py migrate &&
+      python manage.py collectstatic --no-input &&
+      python manage.py runserver 0.0.0.0:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: bergi.settings.dev
+      db_host: postgres
+      db_name: bergi
+      db_user: bergi
+      db_pass: bergi
+      elasticsearch_host: elasticsearch
+    ports:
+      - "8000:8000"
+    volumes:
+      - mediafiles:/app/media
+      - staticfiles:/app/static
+
+  postgres:
+    image: postgres:11-alpine
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: bergi
+      POSTGRES_DB: bergi
+      POSTGRES_PASSWORD: bergi
+
+  elasticsearch:
+    image: elasticsearch:5-alpine
+    volumes:
+      - elasticsearchdata:/usr/share/elasticsearch/data
+    environment:
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+volumes:
+  mediafiles:
+  staticfiles:
+  postgresdata:
+  elasticsearchdata:
